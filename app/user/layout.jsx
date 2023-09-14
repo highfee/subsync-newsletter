@@ -1,13 +1,9 @@
 import React from 'react'
 
-const UserLayout = ({children}) => {
+const Layout = () => {
   return (
-    <div>
-    
-    UserLayout
-    {children}
-    </div>
+    <div>Layout</div>
   )
 }
 
-export default UserLayout
+export default Layout

@@ -1,12 +1,9 @@
 import React from 'react'
 
-const BrandLayout = ({children}) => {
+const Layout = () => {
   return (
-    <div>
-    BrandLayout
-    {children}
-    </div>
+    <div>Layout</div>
   )
 }
 
-export default BrandLayout
+export default Layout
