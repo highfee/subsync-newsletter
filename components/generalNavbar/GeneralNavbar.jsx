@@ -9,7 +9,13 @@ const GeneralNavbar = () => {
     <div className="b shadow-sm p-4">
       <div className="m max-w-container mx-auto flex justify-between items-center">
         <div>
-          <Image src="./images/logo.svg" alt="logo" width="214" height="120" />
+          <Image
+            src="/images/logo.svg"
+            alt="logo"
+            width="214"
+            height="120"
+            priority
+          />
         </div>
         <div>
           <div className="l flex gap-10 items-center">
@@ -20,7 +26,7 @@ const GeneralNavbar = () => {
                 </Link>
               );
             })}
-            <Link href="">Sign in</Link>
+            <Link href="2">Sign in</Link>
             <Button asChild variant="outline" size="sm" className="text-20px">
               <Link href="">Sign up</Link>
             </Button>
