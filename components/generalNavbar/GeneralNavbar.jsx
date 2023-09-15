@@ -6,7 +6,7 @@ import { navLinks } from "@/lib/utils";
 
 const GeneralNavbar = () => {
   return (
-    <div className="b shadow-sm py-4">
+    <div className="b shadow-sm p-4">
       <div className="m max-w-container mx-auto flex justify-between items-center">
         <div>
           <Image src="./images/logo.svg" alt="logo" width="214" height="120" />
@@ -21,7 +21,7 @@ const GeneralNavbar = () => {
               );
             })}
             <Link href="">Sign in</Link>
-            <Button asChild variant="outline" size="sm">
+            <Button asChild variant="outline" size="sm" className="text-20px">
               <Link href="">Sign up</Link>
             </Button>
           </div>
