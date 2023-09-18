@@ -33,7 +33,7 @@ const GeneralNavbar = () => {
             </Button>
           </div>
         </div>
-        <div className="block md:hidden cursor-pointer">
+        <div className="block lg:hidden cursor-pointer">
           <MenuIcon fontSize="large" />
         </div>
       </div>
