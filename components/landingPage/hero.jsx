@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Input } from "../ui/input";
 const Hero = () => {
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-4">
+    <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-4 max-w-container px-10 mx-auto">
       <div className="text-center md:text-left">
         <h1 className="font-[600] text-5xl max-w-[558px] leading-snug">
           Lorem Ipsum is simply dummy

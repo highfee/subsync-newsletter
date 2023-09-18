@@ -81,7 +81,7 @@ const items = [
 ];
 const TopBrands = () => {
   return (
-    <div className="my-20 ">
+    <div className="my-20 max-w-container px-10 mx-auto">
       <div className="text-center">
         <h1 className=" text-3xl md:text-5xl font-bold">Top Brands</h1>
         <p className="text-gray-800 mt-8 max-w-[350px] mx-auto">
