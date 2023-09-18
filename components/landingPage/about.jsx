@@ -17,7 +17,7 @@ const About = () => {
           />
         </div>
         <div className="flex flex-col justify-between gap-6 text-center md:text-left">
-          <h2 className="text-5xl">About us</h2>
+          <h2 className="text-3xl md:text-5xl font-bold">About us</h2>
           <p className="l leading-relaxed text-lg">
             Subsync is a platform that puts together all the top deals from
             different company so as to make it easy for every one get the best
