@@ -1,5 +1,9 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import Carousel from "../utils/carousel";
+// import Carousel from "../utils/carousel";
+const Carousel = dynamic(() => import("@/components/utils/carousel"), {
+  ssr: false,
+});
 
 const items = [
   <div key={1}>
