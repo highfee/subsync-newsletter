@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const GeneralFooter = () => {
-  return (
-    <div>GeneralFooter</div>
-  )
-}
+  return <div className="absolute w-full bottom-0">Footer</div>;
+};
 
-export default GeneralFooter
+export default GeneralFooter;
