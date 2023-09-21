@@ -5,7 +5,7 @@ import React from "react";
 
 const ResetPassword = () => {
   return (
-    <div className="h-screen flex  items-center justify-center px-10">
+    <div className="min-h-screen flex  items-center justify-center px-10">
       <div className=" max-w-[1000px] ">
         <div className="text-center">
           <h1 className="text-3xl md:text-4xl">Reset Password</h1>
@@ -38,8 +38,11 @@ const ResetPassword = () => {
             />
           </div>
 
-          <Button className="rounded-2xl w-full text-xl md:text-2xl h-[65px]">
-            Change
+          <Button
+            className="rounded-2xl w-full text-xl md:text-2xl h-[65px]"
+            asChild
+          >
+            <Link href="/user/verifyPassword">Change</Link>
           </Button>
         </form>
         <p className="mt-10">
