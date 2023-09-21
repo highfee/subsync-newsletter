@@ -5,7 +5,7 @@ import React from "react";
 
 const ResetPassword = () => {
   return (
-    <div className="h-screen flex  items-center justify-center">
+    <div className="h-screen flex  items-center justify-center px-10">
       <div className=" max-w-[1000px] ">
         <div className="text-center">
           <h1 className="text-3xl md:text-4xl">Reset Password</h1>
