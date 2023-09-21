@@ -4,7 +4,7 @@ import GeneralFooter from "@/components/generalFooter/GeneralFooter";
 export default function MainLayout({ children }) {
   return (
     <main>
-      <div className="relative min-h-[100dvh]">
+      <div>
         <GeneralNavbar />
         {children}
       </div>
