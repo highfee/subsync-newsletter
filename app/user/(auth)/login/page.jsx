@@ -9,7 +9,7 @@ import Link from "next/link";
 const UserLogin = () => {
   return (
     <AuthLayout>
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center px-10 gap-10 max-w-container mx-auto ">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center px-10 gap-10 max-w-container mx-auto mb-20">
         <div className="shadow-md-inner h-full  items-center hidden md:flex">
           <Image src="/images/userLogin.svg" alt="" width="600" height="500" />
         </div>
@@ -29,6 +29,7 @@ const UserLogin = () => {
                 className="p-5 h- rounded-3xl text-xl"
                 placeholder="Enter Your Email Address"
                 id="email"
+                type="email"
               />
             </div>
             <div>
@@ -42,6 +43,7 @@ const UserLogin = () => {
                 className="p-5 h- rounded-3xl text-xl"
                 placeholder="Enter Your password"
                 id="password"
+                type="password"
               />
             </div>
             <div className="flex justify-between items-center flex-wrap gap-2">
