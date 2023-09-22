@@ -96,8 +96,10 @@ const BrandLogin = () => {
               <p className="text-[#0B0087] font-semibold text-[15px]"> <Link href="/brand/resetPassword"> Forget Password </Link> </p>
               </div>
             </div>
-
-            <button className="w-[90%] bg-[#0B0087] py-3 text-white font-semibold rounded-[15px] my-4 hover:bg-blue-700 transition-all ease-in-out duration-300">Sign in</button>
+            <Button className="rounded-2xl w-[90%] text-xl md:text-2xl h-[50px] my-4">
+            Sign in
+            </Button>
+            
           </form>
 
           <div className="flex items-center justify-between my-3">

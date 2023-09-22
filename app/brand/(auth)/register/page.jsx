@@ -126,7 +126,9 @@ const BrandLogin = () => {
               </div>
             </div>
 
-            <button className="w-[90%] bg-[#0B0087] py-3 text-white font-semibold rounded-[15px] my-4 hover:bg-blue-700 transition-all ease-in-out duration-300">Sign up</button>
+            <Button className="rounded-2xl w-[90%] text-xl md:text-2xl h-[50px] my-4">
+            Sign up
+            </Button>
           </form>
 
 
