@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SocialMediaButton = ({ icon, text, colorClass, onClick }) => {
+const SocialMediaButton = ({ icon, text, onClick }) => {
   return (
     <div>
         <button

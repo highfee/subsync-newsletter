@@ -1,6 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
-import { Button, buttonVariants, InputField, SocialMediaButton } from '@/components/ui'
+import Link from 'next/link';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'; 
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { InputField, Button} from '@/components/ui';
+
 
 
 const BrandLogin = () => {
@@ -23,7 +27,25 @@ const BrandLogin = () => {
         </div>
         <form className='w-[90%] flex flex-col items-center'>
           <InputField label="Email" placeholder="Enter your email" id="email" type="email"/>
-          <InputField label="Password" placeholder="Enter your password" id="password" type="password" />
+          <InputField label="Password" placeholder="Enter your password" id="password" type="password" icon={<VisibilityOffIcon/>} />
+
+          <div className=' flex justify-between items-center my-[15px] w-[90%]'>
+            <div className='flex items-center'>
+              <p className='text-[15px] text-[#000000] pr-1'>Don’t have an account </p>
+              <Link href="/brand/register">
+                <span className='text-[15px] text-[#0B0087] font-semibold'> Sign up</span>
+              </Link>
+            </div>
+            <div>
+              <Link href="/brand/resetPassword">
+                <span className='text-[15px] text-[#0B0087] font-semibold'> Forget Password</span>
+              </Link>
+            </div>
+          </div>
+
+          <Button className="w-full md:w-[359px]" asChild size="md">
+            Explore now
+          </Button>
         </form>
       </div>
     </div>
