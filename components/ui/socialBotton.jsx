@@ -2,14 +2,14 @@ import React from 'react';
 
 const SocialMediaButton = ({ icon, text, onClick }) => {
   return (
-    <div>
-        <button
+    <div className='w-full flex justify-center items-center mb-2'>
+        <div
         onClick={onClick}
-        className='flex border border-gray-100 items-center text-[#0B0087] rounded-[15px] py-2 px-4 focus:outline-none focus:ring focus:ring-opacity-50 hover:bg-opacity-90 transition duration-300 ease-in-out'
+        className='flex py-2 gap-1 justify-center w-[80%] border border-gray-100 items-center text-[#0B0087] rounded-[15px]  focus:outline-none focus:ring focus:ring-opacity-50 hover:bg-opacity-90 transition duration-300 ease-in-out'
         >
-        <span className="mr-2 w-[52px] h-[52px]">{icon}</span>
-        <span className='text-[30px] font-semibold text-[#0B0087]'>{text}</span>
-        </button>
+        <div>{icon}</div>
+        <div className='font-semibold'>{text}</div>
+        </div>
     </div>
   );
 };

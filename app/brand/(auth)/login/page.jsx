@@ -12,12 +12,14 @@ import AuthLayout from "@/app/layouts/AuthLayout";
 // materiat ui icons
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import GoogleIcon from '@mui/icons-material/Google';
+import FacebookIcon from '@mui/icons-material/Facebook';
 //formik
 import { useFormik} from 'formik';
 import { loginFormSchema } from "@/components/utils/formik";
 
 const onSubmit = ()=>{
-  console.log('submitted')
+  alert('submitted')
 }
 const BrandLogin = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -86,7 +88,7 @@ const BrandLogin = () => {
               type={passwordType}
             />
             {errors.password && touched.password ? <p className="text-red-500 text-[14px] w-[90%]">{errors.password}</p> : ""}
-            <div className="flex justify-between items-center w-[90%]">
+            <div className="flex justify-between items-center w-[90%] mt-2">
               <div className="flex items-center">
                 <p>Don’t have an account <span className="text-[#0B0087] font-semibold text-[15px]"> <Link href="/brand/register">  Sign up</Link></span> </p>
               </div>
@@ -95,10 +97,17 @@ const BrandLogin = () => {
               </div>
             </div>
 
-            <Button className="w-full md:w-[359px]" asChild size="md">
-            Explore now
-            </Button>
+            <button className="w-[90%] bg-[#0B0087] py-3 text-white font-semibold rounded-[15px] my-4 hover:bg-blue-700 transition-all ease-in-out duration-300">Sign in</button>
           </form>
+
+          <div className="flex items-center justify-between my-3">
+                <div className="h-[1px] w-[20%] bg-[#D9D9D9]"></div>
+                <h1 className="text-[20px] text-[#0B0087]">OR</h1>
+                <hr className="bg-gray-100"/>
+          </div>
+
+          <SocialMediaButton text="sign up with Google" icon={<GoogleIcon/>}/>
+          <SocialMediaButton text="sign up with Facebook" icon={<FacebookIcon/>}/>
         </div>
       </div>
     </AuthLayout>
