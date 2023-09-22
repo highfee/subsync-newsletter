@@ -29,9 +29,9 @@ const GeneralNavbar = () => {
                 </Link>
               );
             })}
-            <Link href="">Sign in</Link>
+            <Link href="/user/login">Sign in</Link>
             <Button asChild variant="outline" size="sm" className="text-20px">
-              <Link href="">Sign up</Link>
+              <Link href="/user/register">Sign up</Link>
             </Button>
           </div>
         </div>
