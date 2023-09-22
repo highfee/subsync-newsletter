@@ -51,7 +51,7 @@ const BrandLogin = () => {
         <div className="flex-1  flex items-center justify-center">
           <div className="hidden md:block">
             <Image
-              src="/images/brandLogin.svg"
+              src="/images/brandRegister.svg"
               width="500"
               height="500"
               alt=""
