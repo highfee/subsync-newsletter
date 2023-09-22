@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Button,
-  buttonVariants,
   InputField,
   SocialMediaButton,
 } from "@/components/ui";
@@ -93,7 +92,7 @@ const BrandLogin = () => {
                 <p>Don’t have an account <span className="text-[#0B0087] font-semibold text-[15px]"> <Link href="/brand/register">  Sign up</Link></span> </p>
               </div>
               <div>
-              <p className="text-[#0B0087] font-semibold text-[15px]"> <Link href="/brand/resetPassword"> Forget Password </Link> </p>
+              <p className="text-[#0B0087] font-semibold text-[15px]"> <Link href="/brand/forgetPasswordMessage"> Forget Password </Link> </p>
               </div>
             </div>
             <Button className="rounded-2xl w-[90%] text-xl md:text-2xl h-[50px] my-4">

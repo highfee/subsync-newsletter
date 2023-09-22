@@ -38,3 +38,16 @@ export const registerFormSchema = Yup.object().shape({
         .required("Confirm password is required")
 })
 
+
+export const resetPasswordSchema = Yup.object().shape({
+    password: Yup.string()
+        .required('Password is required')
+        .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+        'Password must contain at least 8 characters, including at least one letter and one number'
+    ),
+    confirmPassword : Yup.string()
+        .oneOf([Yup.ref("password"), null], "Password does not match")
+        .required("Confirm password is required")
+})
+
