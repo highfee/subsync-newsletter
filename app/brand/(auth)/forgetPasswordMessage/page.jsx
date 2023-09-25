@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const ResetPassword = () => {
   return (
-    <div className='flex justify-center items-center flex-col w-full h-[100vh]'>
+    <div className='flex justify-center items-center flex-col w-full maxWidth h-[100vh]'>
       <div>
       <Image
       src="/images/resetEmail.svg"
