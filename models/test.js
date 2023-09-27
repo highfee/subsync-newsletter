@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const TestSchema = new mongoose.Schema(
+const Test = new mongoose.Schema(
   {
     firstName: {
       type: String,
@@ -21,4 +21,4 @@ const TestSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.models.TestSchema || mongoose.model("Test", TestSchema);
+export default mongoose.models.Test || mongoose.model("Test", Test);
