@@ -1,0 +1,11 @@
+ENV = development
+
+MONGODB_URI_DEVELOPMENT = mongodb://127.0.0.1:27017/subsync
+
+MONGODB_URI_PRODUCTION = 
+
+google_client_id = 
+
+google_client_secret = 
+
+google_redirect_uri =http://localhost:3000/oauth2callback
