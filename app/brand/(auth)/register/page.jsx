@@ -49,7 +49,7 @@ const BrandLogin = () => {
 
   return (
     <AuthLayout>
-      <div className="flex w-full h-[700px]">
+      <div className="flex w-full h-[700px] max-w-container mx-auto overflow-x-hidden">
         <div className="flex-1  flex items-center justify-center">
           <div className="hidden md:block">
             <Image
@@ -61,7 +61,7 @@ const BrandLogin = () => {
             />
           </div>
         </div>
-        <div className="flex-1  shadow-lg flex flex-col items-center">
+        <div className="lg:flex-1  w-full  shadow-lg flex flex-col items-center">
           <div className="w-full flex justify-center items-center mt-[30px] mb-[24px]">
             <h1 className="text-[40px] font-bold text-[#0B0087]">Sign up</h1>
           </div>

@@ -1,8 +1,13 @@
-import React from 'react'
+"use client"
+import React, {useState} from 'react'
+import BrandLayout from '@/components/bransLayout/BrandLayout'
 
 const BrandHome = () => {
+  
   return (
-    <div>BrandHome</div>
+    <BrandLayout>
+      <div>brand home</div>
+    </BrandLayout>
   )
 }
 

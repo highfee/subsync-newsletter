@@ -46,7 +46,7 @@ const BrandLogin = () => {
 
   return (
     <AuthLayout>
-      <div className="flex w-full h-[100vh]">
+      <div className="flex w-full h-[100vh] max-w-container mx-auto overflow-x-hidden">
         <div className="flex-1  flex items-center justify-center">
           <div className="hidden md:block">
             <Image
@@ -58,8 +58,8 @@ const BrandLogin = () => {
             />
           </div>
         </div>
-        <div className="flex-1  shadow-lg flex flex-col items-center ">
-          <div className="w-full flex justify-center items-center mt-24 mb-[24px]">
+        <div className=" lg:flex-1  w-full shadow-lg flex flex-col items-center ">
+          <div className="w-full flex justify-center items-center mt-20 lg:mt-24 mb-[24px]">
             <h1 className="text-[40px] font-bold text-[#0B0087]">Sign in</h1>
           </div>
           <form onSubmit={handleSubmit} className="w-[90%] flex flex-col items-center">
@@ -89,10 +89,10 @@ const BrandLogin = () => {
             {errors.password && touched.password ? <p className="text-red-500 text-[14px] w-[90%]">{errors.password}</p> : ""}
             <div className="flex justify-between items-center w-[90%] mt-2">
               <div className="flex items-center">
-                <p>Don’t have an account <span className="text-[#0B0087] font-semibold text-[15px]"> <Link href="/brand/register">  Sign up</Link></span> </p>
+                <p className="text-[12px]  lg:text-[15px]">Don’t have an account <span className="text-[#0B0087] font-semibold text-[12px] lg:text-[15px]"> <Link href="/brand/register">  Sign up</Link></span> </p>
               </div>
               <div>
-              <p className="text-[#0B0087] font-semibold text-[15px]"> <Link href="/brand/forgetPasswordMessage"> Forget Password </Link> </p>
+              <p className="text-[#0B0087] font-semibold text-[12px] lg:text-[15px]"> <Link href="/brand/forgetPasswordMessage"> Forget Password </Link> </p>
               </div>
             </div>
             <Button className="rounded-2xl w-[90%] text-xl md:text-2xl h-[50px] my-4">
