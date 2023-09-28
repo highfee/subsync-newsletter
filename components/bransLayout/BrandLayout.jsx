@@ -49,7 +49,7 @@ const BrandLayout = ({children}) => {
         handleSibeBar={handleSibeBar} 
         sideBarOpen={sideBarOpen} 
         setSideBarOpen={setSideBarOpen}/>
-      <div className='mt-4 '>
+      <div>
         {children}
       </div>
       </div>
