@@ -32,7 +32,7 @@ export async function GET() {
 
     const res = await gmail.users.messages.list({
       userId: "me",
-      maxResults: 1000,
+      maxResults: 100,
       q: `category:promotions`,
     });
     const messageIds = res.data.messages.map((message) => message.id);
