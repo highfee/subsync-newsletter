@@ -74,3 +74,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+input:autofill {
+  outline: 1px solid green;
+  outline-offset: -4px;
+}
+input:-webkit-autofill {
+  outline: 1px solid green;
+  outline-offset: -4px;
+}
