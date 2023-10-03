@@ -14,14 +14,8 @@ import SidebarLinks from '../ui/SidebarLinks';
 const Sidebar = ({sideBarOpen, setSideBarOpen, handleSibeBar, mobileSidebar, setMobileSidebar, handleMobileSidebar}) => {
     
   return (
-    <>
-      <div
-        className={
-          sideBarOpen
-            ? "hidden lg:block w-[20%] bg-[#0B0087] h-[100vh] px-4 py-4 relative transition ease-out duration-700 stick top-0 left-0"
-            : "w-[10%] bg-[#0B0087] px-4 py-4 h-[100vh] relative transition-all ease-in duration-800 stick top-0 left-0"
-        }
-      >
+    <div className={sideBarOpen ? ' hidden lg:block sticky top-0 left-0 z-30 w-[20%] bg-[#0B0087] transition ease-out duration-700 ' : ' sticky top-0 left-0 z-30 w-[10%] bg-[#0B0087] transition-all ease-out duration-700'}>
+      <div className="w-[100%]  h-[100vh] px-4 py-4 relative">
         <div
           onClick={handleSibeBar}
           className="absolute top-6 right-4 text-white border border-white rounded-md"
@@ -77,7 +71,7 @@ const Sidebar = ({sideBarOpen, setSideBarOpen, handleSibeBar, mobileSidebar, set
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -24,7 +24,7 @@ const BrandLayout = ({children}) => {
         }
     }
   return (
-    <div className='flex  w-full overflow-x-hidden'>
+    <div className='flex  w-full relative h-screen overflow-x-hidden'>
       <Sidebar 
         handleMobileSidebar={handleMobileSidebar} 
         mobileSidebar={mobileSidebar} 

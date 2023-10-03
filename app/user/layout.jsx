@@ -1,5 +1,9 @@
-import React from "react";
+import React from 'react'
 
-export default function RootLayout({ children }) {
-  return <div>{children}</div>;
+const Layout = () => {
+  return (
+    <div>Layout</div>
+  )
 }
+
+export default Layout

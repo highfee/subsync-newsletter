@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui'
 import Link from 'next/link'
 import Modal from '@/components/ui/modal'
+import BrandForm from '@/components/ui/BrandForm'
 
 /**
  * Renders a welcome screen for a brand.
@@ -22,7 +23,7 @@ const BrandWelcome = () => {
     <BrandLayout>
       <div className="w-full relative">
         <div className="flex flex-col items-center gap-y-2 mt-4 w-full">
-          <div className="mt-3">
+          <div className="mt-12">
             <Image
               src="/images/brandWelcome.svg"
               width={500}
@@ -43,7 +44,7 @@ const BrandWelcome = () => {
             <Button
               type="button"
               onClick={handleModal}
-              className="rounded-[15px] w-[50%] text-xl md:text-2xl h-[50px] mt-8"
+              className="rounded-[15px] w-[50%] text-md md:text-lg h-[50px] mt-8"
             >
               Register Brand
             </Button>
@@ -56,7 +57,9 @@ const BrandWelcome = () => {
             modal={modal}
             setModal={setModal}
             handleModal={handleModal}
-          />
+          >
+          <BrandForm/>
+          </Modal>
         )}
       </div>
     </BrandLayout>
