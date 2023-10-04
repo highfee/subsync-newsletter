@@ -1,6 +1,6 @@
 import React from "react";
-
-const modal = () => {
+import ClearIcon from "@mui/icons-material/Clear";
+const Modal = ({ modal, setModal, handleModal, children }) => {
   return (
     <div
       className={
@@ -24,4 +24,4 @@ const modal = () => {
   );
 };
 
-export default modal;
+export default Modal;

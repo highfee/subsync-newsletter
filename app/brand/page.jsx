@@ -1,6 +1,6 @@
 import React from "react";
-
-const page = () => {
+import BrandLayout from "@/components/bransLayout/BrandLayout";
+const BrandHome = () => {
   return <BrandLayout></BrandLayout>;
 };
 
