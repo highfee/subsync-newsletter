@@ -1,22 +1,7 @@
-"use client"
-import React, {useState} from 'react'
-import BrandLayout from '@/components/bransLayout/BrandLayout'
-import Image from 'next/image'
-import { Button } from '@/components/ui'
+import React from "react";
 
-const BrandHome = () => {
-  const [welcome, setWelcome] = useState(true)
+const page = () => {
+  return <BrandLayout></BrandLayout>;
+};
 
-  const handleWelcome = ()=>{
-    if(welcome == true){
-      setWelcome(false)
-    }
-  }
-  return (
-    <BrandLayout>
-      
-    </BrandLayout>
-  );
-}
-
-export default BrandHome
+export default BrandHome;

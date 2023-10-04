@@ -1,19 +1,41 @@
+"use client";
+import { useState } from "react";
+
 import AuthLayout from "@/app/layouts/AuthLayout";
 import { Button } from "@/components/ui";
 import { Input } from "@/components/ui/input";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import Image from "next/image";
 import Link from "next/link";
 
+import { useFormik } from "formik";
+import { loginFormSchema } from "@/components/utils/formik";
+
 const UserLogin = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const onSubmit = () => {};
+
+  const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
+    useFormik({
+      initialValues: {
+        email: "",
+        password: "",
+      },
+      validationSchema: loginFormSchema,
+      onSubmit,
+    });
+
   return (
     <AuthLayout>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center px-10 gap-10 max-w-container mx-auto mb-20">
         <div className="shadow-md-inner h-full  items-center hidden md:flex">
           <Image src="/images/userLogin.svg" alt="" width="600" height="500" />
         </div>
-        <div className="min-h-[calc(100vh-100px)] pt-16 md:pt-20">
+        <div className="min-h-[calc(100vh-100px)] pt-16 md:pt-20 md:mx-10">
           <p className="text-center text-4xl md:text-5xl text-primary-bg font-bold">
             Sign In
           </p>
@@ -26,11 +48,20 @@ const UserLogin = () => {
                 Email
               </label>
               <Input
-                className="p-5 h- rounded-3xl text-xl"
+                className="p-4 h- rounded-3xl text-lg"
                 placeholder="Enter Your Email Address"
                 id="email"
                 type="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
+              {errors.email && touched.email ? (
+                <p className="text-red-500 text-[14px] w-[90%] mt-1">
+                  {errors.email}
+                </p>
+              ) : (
+                ""
+              )}
             </div>
             <div>
               <label
@@ -39,12 +70,29 @@ const UserLogin = () => {
               >
                 Password
               </label>
-              <Input
-                className="p-5 h- rounded-3xl text-xl"
-                placeholder="Enter Your password"
-                id="password"
-                type="password"
-              />
+              <div className="relative">
+                <Input
+                  className="p-4 h- rounded-3xl text-lg"
+                  placeholder="Enter Your password"
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <div
+                  className="absolute top-1/2 -translate-y-1/2 right-5"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {!showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                </div>
+              </div>
+              {errors.password && touched.password ? (
+                <p className="text-red-500 text-[14px] w-[90%] mt-1">
+                  {errors.password}
+                </p>
+              ) : (
+                ""
+              )}
             </div>
             <div className="flex justify-between items-center flex-wrap gap-2">
               <p className="text-base ">
@@ -63,25 +111,25 @@ const UserLogin = () => {
                 Forget Password
               </Link>
             </div>
-            <Button className="rounded-2xl w-full text-xl md:text-2xl h-[65px]">
+            <Button className="rounded-2xl w-full text-lg md:text-xl py-4">
               Sign in
             </Button>
           </form>
-          <div />
+          
           <div className="mt-10 flex flex-col gap-8">
-            <Button variant="outline" className="w-full text-xl md:text-2xl">
-              <GoogleIcon
-                fontSize="larg"
-                className="mr-1 text-2xl md:text-4xl"
-              />{" "}
-              Sign in with Google
+            <Button
+              variant="outline"
+              className="w-full text-lg md:text-xl border"
+            >
+              <GoogleIcon fontSize="larg" className="mr-1 " /> Sign in with
+              Google
             </Button>
-            <Button variant="outline" className="w-full text-xl md:text-2xl">
-              <FacebookIcon
-                fontSize="larg"
-                className="mr-1 text-2xl md:text-4xl"
-              />{" "}
-              Sign in with Facebook
+            <Button
+              variant="outline"
+              className="w-full text-lg md:text-xl border"
+            >
+              <FacebookIcon fontSize="larg" className="mr-1" /> Sign in with
+              Facebook
             </Button>
           </div>
         </div>

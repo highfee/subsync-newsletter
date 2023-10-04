@@ -1,22 +1,22 @@
-"use client"
-import React, {useState} from 'react'
-import BrandLayout from '@/components/bransLayout/BrandLayout'
-import Image from 'next/image'
-import { Button } from '@/components/ui'
-import Link from 'next/link'
-import Modal from '@/components/ui/modal'
-import BrandForm from '@/components/ui/BrandForm'
+"use client";
+import React, { useState } from "react";
+import BrandLayout from "@/components/bransLayout/BrandLayout";
+import Image from "next/image";
+import { Button } from "@/components/ui";
+import Link from "next/link";
+import Modal from "@/components/ui/modal";
+import BrandForm from "@/components/ui/BrandForm";
 
 /**
  * Renders a welcome screen for a brand.
- * 
+ *
  * @returns {JSX.Element} The welcome screen component.
  */
 const BrandWelcome = () => {
   const [modal, setModal] = useState(false);
 
   const handleModal = () => {
-    setModal(prevModal => !prevModal);
+    setModal((prevModal) => !prevModal);
   };
 
   return (
@@ -53,12 +53,8 @@ const BrandWelcome = () => {
 
         {/* modal section*/}
         {modal && (
-          <Modal
-            modal={modal}
-            setModal={setModal}
-            handleModal={handleModal}
-          >
-          <BrandForm/>
+          <Modal modal={modal} setModal={setModal} handleModal={handleModal}>
+            <BrandForm />
           </Modal>
         )}
       </div>
@@ -66,4 +62,4 @@ const BrandWelcome = () => {
   );
 };
 
-export default BrandWelcome
+export default BrandWelcome;

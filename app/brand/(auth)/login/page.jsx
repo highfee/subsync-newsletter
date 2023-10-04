@@ -1,48 +1,44 @@
-"use client"
-import React, {useState} from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Button,
-  InputField,
-  SocialMediaButton,
-} from "@/components/ui";
+import { Button, InputField, SocialMediaButton } from "@/components/ui";
 import AuthLayout from "@/app/layouts/AuthLayout";
 // materiat ui icons
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
 //formik
-import { useFormik} from 'formik';
+import { useFormik } from "formik";
 import { loginFormSchema } from "@/components/utils/formik";
 
-const onSubmit = ()=>{
-  alert('submitted')
-}
+const onSubmit = () => {
+  alert("submitted");
+};
 const BrandLogin = () => {
-  const [showPassword, setShowPassword] = useState(false)
-  const [passwordType, setPasswordType] = useState("password")
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordType, setPasswordType] = useState("password");
 
-  const handlepassword = ()=>{
-    if(showPassword == false){
+  const handlepassword = () => {
+    if (showPassword == false) {
       setShowPassword(!showPassword);
-      setPasswordType("text")
-    }else{
+      setPasswordType("text");
+    } else {
       setShowPassword(!showPassword);
-      setPasswordType("password")
+      setPasswordType("password");
     }
-  }
+  };
 
-  const {values, errors, handleBlur, handleChange, handleSubmit, touched} = useFormik({
-    initialValues:{
-      email: "",
-      password: ""
-    },
-    validationSchema :loginFormSchema ,
-    onSubmit,
-  })
-
+  const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
+    useFormik({
+      initialValues: {
+        email: "",
+        password: "",
+      },
+      validationSchema: loginFormSchema,
+      onSubmit,
+    });
 
   return (
     <AuthLayout>
@@ -62,7 +58,10 @@ const BrandLogin = () => {
           <div className="w-full flex justify-center items-center mt-20 lg:mt-24 mb-[24px]">
             <h1 className="text-[40px] font-bold text-[#0B0087]">Sign in</h1>
           </div>
-          <form onSubmit={handleSubmit} className="w-[90%] flex flex-col items-center">
+          <form
+            onSubmit={handleSubmit}
+            className="w-[90%] flex flex-col items-center"
+          >
             <InputField
               value={values.email}
               onChange={handleChange}
@@ -72,43 +71,66 @@ const BrandLogin = () => {
               id="email"
               type="email"
             />
-            {errors.email && touched.email ? <p className="text-red-500 text-[14px] w-[90%]">{errors.email}</p> : ""}
-            
+            {errors.email && touched.email ? (
+              <p className="text-red-500 text-[14px] w-[90%]">{errors.email}</p>
+            ) : (
+              ""
+            )}
+
             <InputField
               value={values.password}
               onChange={handleChange}
-              onBlur={handleBlur} 
+              onBlur={handleBlur}
               label="Password"
               placeholder="Enter your password"
               id="password"
-              handlepassword = {handlepassword}
-              icon={
-                showPassword ? <VisibilityIcon/> : <VisibilityOffIcon/>}
+              handlepassword={handlepassword}
+              icon={showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
               type={passwordType}
             />
-            {errors.password && touched.password ? <p className="text-red-500 text-[14px] w-[90%]">{errors.password}</p> : ""}
+            {errors.password && touched.password ? (
+              <p className="text-red-500 text-[14px] w-[90%]">
+                {errors.password}
+              </p>
+            ) : (
+              ""
+            )}
             <div className="flex justify-between items-center w-[90%] mt-2">
               <div className="flex items-center">
-                <p className="text-[12px]  lg:text-[15px]">Don’t have an account <span className="text-[#0B0087] font-semibold text-[12px] lg:text-[15px]"> <Link href="/brand/register">  Sign up</Link></span> </p>
+                <p className="text-[12px]  lg:text-[15px]">
+                  Don’t have an account{" "}
+                  <span className="text-[#0B0087] font-semibold text-[12px] lg:text-[15px]">
+                    {" "}
+                    <Link href="/brand/register"> Sign up</Link>
+                  </span>{" "}
+                </p>
               </div>
               <div>
-              <p className="text-[#0B0087] font-semibold text-[12px] lg:text-[15px]"> <Link href="/brand/forgetPasswordMessage"> Forget Password </Link> </p>
+                <p className="text-[#0B0087] font-semibold text-[12px] lg:text-[15px]">
+                  {" "}
+                  <Link href="/brand/forgetPasswordMessage">
+                    {" "}
+                    Forget Password{" "}
+                  </Link>{" "}
+                </p>
               </div>
             </div>
             <Button className="rounded-2xl w-[90%] text-xl md:text-2xl h-[50px] my-4">
-            Sign in
+              Sign in
             </Button>
-            
           </form>
 
           <div className="flex items-center justify-between my-3">
-                <div className="h-[1px] w-[20%] bg-[#D9D9D9]"></div>
-                <h1 className="text-[20px] text-[#0B0087]">OR</h1>
-                <hr className="bg-gray-100"/>
+            
+            <h1 className="text-[20px] text-[#0B0087]">OR</h1>
+            
           </div>
 
-          <SocialMediaButton text="sign up with Google" icon={<GoogleIcon/>}/>
-          <SocialMediaButton text="sign up with Facebook" icon={<FacebookIcon/>}/>
+          <SocialMediaButton text="sign up with Google" icon={<GoogleIcon />} />
+          <SocialMediaButton
+            text="sign up with Facebook"
+            icon={<FacebookIcon />}
+          />
         </div>
       </div>
     </AuthLayout>

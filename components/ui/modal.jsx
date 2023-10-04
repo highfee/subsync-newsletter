@@ -1,10 +1,6 @@
-"use client"
-import React from 'react'
-import ClearIcon from '@mui/icons-material/Clear';
-import BrandForm from './brandForm';
+import React from "react";
 
-
-const Modal = ({modal, setModal, handleModal, children}) => {
+const modal = () => {
   return (
     <div
       className={
@@ -26,6 +22,6 @@ const Modal = ({modal, setModal, handleModal, children}) => {
       </div>
     </div>
   );
-}
+};
 
-export default Modal
+export default modal;

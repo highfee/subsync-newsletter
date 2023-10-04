@@ -1,9 +1,12 @@
-import React from 'react'
+import UserLayout from "@/app/layouts/userLayout";
+import React from "react";
 
 const CategoryPage = () => {
   return (
-    <div>CategoryPage</div>
-  )
-}
+    <UserLayout>
+      <div>CategoryPage</div>
+    </UserLayout>
+  );
+};
 
-export default CategoryPage
+export default CategoryPage;

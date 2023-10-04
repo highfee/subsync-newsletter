@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { google } from "googleapis";
-import dbConnect from "@/lib/dbConnect";
+// import dbConnect from "@/lib/dbConnect";
 import Test from "@/models/test";
 
 export async function GET() {
-  await dbConnect();
+  // await dbConnect();
 
-  const test = await Test.find();
+  // const test = await Test.find();
 
   try {
     const GOOGLE_CLIENT_ID = process.env.google_client_id;
@@ -32,7 +32,7 @@ export async function GET() {
 
     const res = await gmail.users.messages.list({
       userId: "me",
-      maxResults: 1,
+      maxResults: 100,
       q: `category:promotions`,
     });
     const messageIds = res.data.messages.map((message) => message.id);
@@ -48,7 +48,9 @@ export async function GET() {
 
       messages.push(message.data);
     }
-    return NextResponse.json({ messages: messages });
+    return NextResponse.json({
+      messages: messages,
+    });
   } catch (error) {
     NextResponse.json({ message: "something went wrong" });
   }
