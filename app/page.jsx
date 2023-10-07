@@ -12,7 +12,7 @@ const fetchData = async () => {
 };
 export default async function Home() {
   // const data = await fetchData();
-  console.log(data);
+  // console.log(data);
   return (
     <MainLayout>
       <main className=" pt-16 lg:pt-30 ">
