@@ -11,7 +11,7 @@ const fetchData = async () => {
   return res.json();
 };
 export default async function Home() {
-  const data = await fetchData();
+  // const data = await fetchData();
   console.log(data);
   return (
     <MainLayout>
