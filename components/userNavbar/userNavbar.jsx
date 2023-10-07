@@ -8,7 +8,7 @@ const UserNavbar = () => {
     <div className="b shadow-sm p-4 sticky top-0 bg-white z-50">
       <div className="m max-w-container mx-auto flex justify-between items-center">
         <div className="flex items-center gap-5">
-          {/*<Link href="/">
+          <Link href="/">
             <Image
               src="/images/logo.svg"
               alt="logo"
@@ -17,7 +17,7 @@ const UserNavbar = () => {
               priority
             />
           </Link>
-           */}
+
           <Link href="/">Register brand</Link>
         </div>
 
