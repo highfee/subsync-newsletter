@@ -80,6 +80,9 @@ module.exports = {
       boxShadow: {
         sm: "3px 8px 20px 0 rgba(0, 0, 0, 0.12)",
       },
+      gridTemplateColumns: {
+        autofill: "repeat(auto-fill, minmax(200px, 1fr))",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

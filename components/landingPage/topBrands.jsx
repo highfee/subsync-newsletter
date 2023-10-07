@@ -79,14 +79,12 @@ const items = [
     />
   </div>,
 ];
-const TopBrands = () => {
+const TopBrands = ({ title, subtitle }) => {
   return (
     <div className="my-20 max-w-container px-10 mx-auto">
       <div className="text-center">
-        <h1 className=" text-3xl md:text-5xl font-bold">Top Brands</h1>
-        <p className="text-gray-800 mt-8 max-w-[350px] mx-auto">
-          See what all the top brands have installed for you and your loved once
-        </p>
+        <h1 className=" text-3xl md:text-5xl font-bold">{title}</h1>
+        <p className="text-gray-800 mt-8 max-w-[350px] mx-auto">{subtitle}</p>
       </div>
       <div className="mt-10">
         <Carousel items={items} />

@@ -14,7 +14,7 @@ const Carousel = ({ items }) => {
       <OwlCarousel
         className="owl-theme"
         loop
-        margin={10}
+        margin={15}
         dots
         items={"auto"}
         autoWidth={true}

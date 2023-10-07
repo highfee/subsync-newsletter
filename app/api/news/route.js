@@ -32,7 +32,7 @@ export async function GET() {
 
     const res = await gmail.users.messages.list({
       userId: "me",
-      maxResults: 100,
+      maxResults: 10,
       q: `category:promotions`,
     });
     const messageIds = res.data.messages.map((message) => message.id);
@@ -49,7 +49,7 @@ export async function GET() {
       messages.push(message.data);
     }
     return NextResponse.json({
-      messages: messages,
+      res: messages,
     });
   } catch (error) {
     NextResponse.json({ message: "something went wrong" });

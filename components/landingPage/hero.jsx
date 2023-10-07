@@ -1,17 +1,14 @@
 import Image from "next/image";
 import { Input } from "../ui/input";
-const Hero = () => {
+const Hero = ({ title, subtitle, img }) => {
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-4 max-w-container px-10 mx-auto">
       <div className="text-center md:text-left">
         <h1 className="font-[600] text-3xl md:text-5xl max-w-[558px] leading-snug">
-          Lorem Ipsum is simply dummy
+          {title}
         </h1>
-        <p className="text-[#797979] py-10">
-          Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy Lorem Ipsum is
-          simply dummy Lorem Ipsum is simply dummy
-        </p>
-        <div className="flex items-center gap-1.5 border-2 p-2 rounded-full focus-within:outline-2  focus-within:outline focus-within:-outline-offset-[6px] focus-within:outline-primary-bg/50">
+        <p className="text-[#797979] py-10">{subtitle}</p>
+        <div className="flex items-center gap-1.5 border-2 p-2 rounded-full focus-within:outline-2  focus-within:outline /images/hero image.svgfocus-within:-outline-offset-[6px] focus-within:outline-primary-bg/50">
           <Input
             type="text"
             id="email"
@@ -30,7 +27,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="hidden md:block">
-        <Image src="/images/hero image.svg" alt="" width="629" height="600" />
+        <Image src={img} alt="" width="629" height="600" />
       </div>
     </div>
   );
