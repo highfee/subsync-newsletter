@@ -114,7 +114,7 @@ const UserRegistration = () => {
               Sign up
             </Button>
           </form>
-          <div />
+      
           {/* <div className="mt-10 flex flex-col gap-8">
             <Button variant="outline" className="w-full text-xl md:text-2xl">
               <GoogleIcon

@@ -121,9 +121,9 @@ const BrandLogin = () => {
           </form>
 
           <div className="flex items-center justify-between my-3">
-            <div className="h-[1px] w-[20%] bg-[#D9D9D9]"></div>
+            
             <h1 className="text-[20px] text-[#0B0087]">OR</h1>
-            <hr className="bg-gray-100" />
+            
           </div>
 
           <SocialMediaButton text="sign up with Google" icon={<GoogleIcon />} />
