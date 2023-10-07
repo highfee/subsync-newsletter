@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { google } from "googleapis";
 // import dbConnect from "@/lib/dbConnect";
-import Test from "@/models/test";
+// import Test from "@/models/test";
 
 export async function GET() {
   // await dbConnect();
@@ -52,6 +52,6 @@ export async function GET() {
       res: messages,
     });
   } catch (error) {
-    NextResponse.json({ message: "something went wrong" });
+    return NextResponse.json({ message: "something went wrong" });
   }
 }
