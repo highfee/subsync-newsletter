@@ -1,5 +1,8 @@
+import dynamic from "next/dynamic";
+const Carousel = dynamic(() => import("@/components/utils/carousel"), {
+  ssr: false,
+});
 import Link from "next/link";
-import Carousel from "../utils/carousel";
 import Image from "next/image";
 import { Button } from "../ui";
 

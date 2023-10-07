@@ -1,6 +1,5 @@
-import dynamic from "next/dynamic";
 import Image from "next/image";
-// import Carousel from "../utils/carousel";
+import dynamic from "next/dynamic";
 const Carousel = dynamic(() => import("@/components/utils/carousel"), {
   ssr: false,
 });
