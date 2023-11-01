@@ -13,15 +13,15 @@ const Carousel = ({ items }) => {
     <div>
       <OwlCarousel
         className="owl-theme"
-        loop
-        margin={15}
+        // loop
+        margin={25}
         dots
         items={"auto"}
         autoWidth={true}
         // center={true}
         //   responsive={Responsive}
       >
-        {items.map((item, i) => (
+        {items?.map((item, i) => (
           <div class="item" key={i}>
             {item}
           </div>

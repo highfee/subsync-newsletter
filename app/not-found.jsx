@@ -9,7 +9,7 @@ const NotFound = () => {
       <div className="flex justify-center items-center h-[calc(100vh-200px)] ">
         <div>
           <Image
-            src="./images/404.svg"
+            src="/images/404.svg"
             alt="not found"
             width={804}
             height={534}
