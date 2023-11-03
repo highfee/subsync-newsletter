@@ -8,10 +8,14 @@ export const GET = async (request, { params }) => {
   try {
     const brandName = params.name;
 
+    const brand = await Brands.findOne({
+      name: { $regex: new RegExp(brandName, "i") },
+    });
+
     const mails = await Mail.find({
       sender: { $regex: new RegExp(brandName, "i") },
     });
-    return NextResponse.json({ res: mails });
+    return NextResponse.json({ mails: mails, brand: brand });
   } catch (error) {
     return NextResponse.json({ error });
   }

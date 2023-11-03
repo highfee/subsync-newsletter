@@ -9,92 +9,37 @@ import Image from "next/image";
 import { Button } from "../ui";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useState } from "react";
 
-// const items = [
-//   <div key={1} className="max-w-[280px]">
-//     <Image
-//       src="/images/brand_thumbnail.svg"
-//       alt=""
-//       height="180"
-//       width="180"
-//       className=" w-[200px] h-[200px]"
-//     />
-//     <Button className="w-full py-1 mt-2">follow</Button>
-//   </div>,
-//   <div key={1} className="max-w-[280px]">
-//     <Image
-//       src="/images/brand_thumbnail.svg"
-//       alt=""
-//       height="180"
-//       width="180"
-//       className=" w-[200px] h-[200px]"
-//     />
-//     <Button className="w-full py-1 mt-2">follow</Button>
-//   </div>,
-//   <div key={1} className="max-w-[280px]">
-//     <Image
-//       src="/images/brand_thumbnail.svg"
-//       alt=""
-//       height="180"
-//       width="180"
-//       className=" w-[200px] h-[200px]"
-//     />
-//     <Button className="w-full py-1 mt-2">follow</Button>
-//   </div>,
-//   <div key={1} className="max-w-[280px]">
-//     <Image
-//       src="/images/brand_thumbnail.svg"
-//       alt=""
-//       height="180"
-//       width="180"
-//       className=" w-[200px] h-[200px]"
-//     />
-//     <Button className="w-full py-1 mt-2">follow</Button>
-//   </div>,
-//   <div key={1} className="max-w-[280px]">
-//     <Image
-//       src="/images/brand_thumbnail.svg"
-//       alt=""
-//       height="180"
-//       width="180"
-//       className=" w-[200px] h-[200px]"
-//     />
-//     <Button className="w-full py-1 mt-2">follow</Button>
-//   </div>,
-//   <div key={1} className="max-w-[280px]">
-//     <Image
-//       src="/images/brand_thumbnail.svg"
-//       alt=""
-//       height="180"
-//       width="180"
-//       className=" w-[200px] h-[200px]"
-//     />
-//     <Button className="w-full py-1 mt-2">follow</Button>
-//   </div>,
-// ];
-
-const BrandsThumbnail = ({ category }) => {
+const BrandsThumbnail = () => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["categories"],
+    queryKey: ["catergories"],
     queryFn: async () => {
       const { data } = await axios.get("/api/categories");
+      setTest(data);
       return data;
     },
   });
+  const [test, setTest] = useState(data);
 
   const imgLoader = (url) => {
     return url;
   };
 
-  const items = data?.mails.map((mail, i) => {
+  const items = test?.brands.map((mail, i) => {
     return (
-      <div key={1} className="max-w-[280px]">
+      <div key={i} className="w-[280px] h-[]">
         <Image
-          src="/images/brand_thumbnail.svg"
+          loader={() => imgLoader(mail.logoUrl)}
+          src={
+            mail.logoUrl == null
+              ? "/images/brand-1.png"
+              : mail.logoUrl + `?timestamp=${Date.now()}`
+          }
           alt=""
           height="180"
           width="180"
-          className=" w-[200px] h-[200px]"
+          className=" w-[200px] h-[200px] object-contain"
         />
         <Button className="w-full py-1 mt-2">follow</Button>
       </div>
@@ -104,13 +49,13 @@ const BrandsThumbnail = ({ category }) => {
   return (
     <div className="my-20 max-w-container px-10 mx-auto">
       <div className="flex flex-col gap-4">
-        <h1 className="text-3xl md:text-4xl font-bold max-w-[400px]">
-          Emails from {data?.res.name}
+        <h1 className="text-3xl md:text-4xl font-bold max-w-[450px]">
+          Emails from {data?.category.name} Brands
         </h1>
         <div className="flex justify-between items-center">
           <div className="text-gray-700">
             <p>Get all the latest email newsletter from all</p>
-            <p className="font-bold">{data?.res.name}</p>
+            <p className="font-bold">{data?.category.name} Brands</p>
           </div>
           <div className="font-bold">
             <Link href="">ALL</Link>
@@ -118,7 +63,7 @@ const BrandsThumbnail = ({ category }) => {
         </div>
       </div>
       <div className="mt-2">
-        <Carousel items={items} />
+        <Carousel items={items} key={data?.category._id} />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ export const GET = async (request, { params }) => {
 
   try {
     let randomBrands = await Brands.aggregate([{ $sample: { size: 10 } }]);
+
     return NextResponse.json({ res: randomBrands });
   } catch (error) {
     return NextResponse.json(error);

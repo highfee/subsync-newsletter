@@ -8,82 +8,8 @@ const Carousel = dynamic(() => import("@/components/utils/carousel"), {
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Suspense } from "react";
+import Link from "next/link";
 
-// const items = [
-//   <div key={1}>
-//     <Image
-//       src="/images/brand-1.png"
-//       alt=""
-//       height="200"
-//       width="200"
-//       className=" w-[200px] h-[200px]"
-//     />
-//   </div>,
-//   <div key={2}>
-//     <Image
-//       src="/images/brand-2.svg"
-//       alt=""
-//       height="200"
-//       width="200"
-//       className="w-[200px]  h-[200px]"
-//     />
-//   </div>,
-//   <div key={3}>
-//     <Image
-//       src="/images/brand-3.svg"
-//       alt=""
-//       height="200"
-//       width="200"
-//       className="w-[200px]  h-[200px]"
-//     />
-//   </div>,
-//   <div key={4}>
-//     <Image
-//       src="/images/brand-3.svg"
-//       alt=""
-//       height="200"
-//       width="200"
-//       className="w-[200px]  h-[200px]"
-//     />
-//   </div>,
-//   <div key={5}>
-//     <Image
-//       src="/images/brand-3.svg"
-//       alt=""
-//       height="200"
-//       width="200"
-//       className="w-[200px]  h-[200px]"
-//     />
-//   </div>,
-//   <div key={6}>
-//     <Image
-//       src="/images/brand-3.svg"
-//       alt=""
-//       height="200"
-//       width="200"
-//       className="w-[200px]  h-[200px]"
-//     />
-//   </div>,
-//   <div key={7}>
-//     <Image
-//       src="/images/brand-3.svg"
-//       alt=""
-//       height="200"
-//       width="200"
-//       className="w-[200px]  h-[200px]"
-//     />
-//   </div>,
-//   <div key={8}>
-//     <Image
-//       src="/images/brand-3.svg"
-//       alt=""
-//       height="200"
-//       width="200"
-//       className="w-[200px]  h-[200px]"
-//     />
-//   </div>,
-// ];
 const TopBrands = ({ title, subtitle }) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["brands"],
@@ -103,18 +29,20 @@ const TopBrands = ({ title, subtitle }) => {
         key={i}
         className="max-w-[400px] h-[200px] flex items-center shadow-g p-5"
       >
-        <Suspense
-          fallback={<div className="text-4xl text-black">Loading...</div>}
-        >
+        <Link href={`/user/brands/${item.name}`}>
           <Image
             loader={() => imgLoader(item.logoUrl)}
-            src={item.logoUrl == null ? "/images/brand-1.png" : item.logoUrl}
+            src={
+              item.logoUrl == null
+                ? "/images/brand-1.png"
+                : item.logoUrl + `?timestamp=${Date.now()}`
+            }
             alt=""
             height="200"
             width="200"
             className=" w-full h-auto object-cove"
           />
-        </Suspense>
+        </Link>
       </div>
     );
   });
@@ -126,7 +54,7 @@ const TopBrands = ({ title, subtitle }) => {
         <p className="text-gray-800 mt-8 max-w-[350px] mx-auto">{subtitle}</p>
       </div>
       <div className="mt-10">
-        <Carousel items={items} />
+        <Carousel items={items} key={data?.id} />
       </div>
     </div>
   );

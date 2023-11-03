@@ -40,3 +40,13 @@ export default fetch = async (req, res) => {
     res.status(500).json({ error: "An error occurred" });
   }
 };
+
+// for (const messageId of messageIds) {
+//   const message = await gmail.users.messages.get({
+//     userId: "me",
+//     id: messageId,
+//     format: "full", // Request the full message content
+//   });
+
+//   messages.push(message.data);
+// }

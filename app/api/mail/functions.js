@@ -1,7 +1,5 @@
 import { google } from "googleapis";
-import Categories from "@/models/categories";
-import Brands from "@/models/brands";
-import crypto from "crypto";
+
 import * as Cheerio from "cheerio";
 
 import { OPEN_AI_CATEGORY_PROMPT } from "@/lib/utils";
@@ -62,23 +60,6 @@ export const getMessageCategory = async (message, sender) => {
 
   let category = res.choices[0].message.content;
 
-  category.split(",").map(async (item) => {
-    const categoryExist = await Categories.findOne({
-      name: item.toLocaleLowerCase(),
-    });
-
-    if (!categoryExist) {
-      const cat = new Categories({
-        name: item.toLocaleLowerCase(),
-      });
-      await cat.save();
-    }
-
-    await Brands.updateOne(
-      { name: sender, categories: { $ne: item } },
-      { $addToSet: { categories: item } }
-    );
-  });
   return category;
 };
 
@@ -105,7 +86,7 @@ export const fetchMails = async () => {
 
   const res = await gmail.users.messages.list({
     userId: "me",
-    maxResults: 10,
+    maxResults: 100,
     q: `category:promotions`,
   });
 
@@ -131,12 +112,20 @@ export async function fetchSenderLogo2(message) {
   return firstImageWithMinimumWidth;
 }
 
-// for (const messageId of messageIds) {
-//   const message = await gmail.users.messages.get({
-//     userId: "me",
-//     id: messageId,
-//     format: "full", // Request the full message content
+// category.split(",").map(async (item) => {
+//   const categoryExist = await Categories.findOne({
+//     name: item.toLocaleLowerCase(),
 //   });
 
-//   messages.push(message.data);
-// }
+//   if (!categoryExist) {
+//     const cat = new Categories({
+//       name: item.toLocaleLowerCase(),
+//     });
+//     await cat.save();
+//   }
+
+//   await Brands.updateOne(
+//     { name: sender, categories: { $ne: item } },
+//     { $addToSet: { categories: item } }
+//   );
+// });

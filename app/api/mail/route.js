@@ -3,6 +3,7 @@ import { google } from "googleapis";
 import dbConnect from "@/lib/dbConnect";
 import Mails from "@/models/mail";
 import Brands from "@/models/brands";
+import Categories from "@/models/categories";
 
 import {
   getSender,
@@ -79,6 +80,40 @@ export async function GET() {
           });
           await brand.save();
         }
+
+        const category = await getMessageCategory(
+          message.data.snippet,
+          getSender(
+            message.data.payload.headers.find((item) => item.name == "From")
+              .value
+          )
+        );
+
+        const categoryItems = category.split(",");
+
+        const sender = getSender(
+          message.data.payload.headers.find((item) => item.name == "From").value
+        );
+
+        for (const item of categoryItems) {
+          const lowerCaseItem = item.trim().toLowerCase();
+
+          const categoryExist = await Categories.findOne({
+            name: lowerCaseItem,
+          });
+
+          if (!categoryExist) {
+            const cat = new Categories({
+              name: lowerCaseItem,
+            });
+            await cat.save();
+          }
+          await Brands.updateOne(
+            { name: sender, categories: { $ne: lowerCaseItem } },
+            { $addToSet: { categories: lowerCaseItem } }
+          );
+        }
+
         messages.push(mail);
       }
     }

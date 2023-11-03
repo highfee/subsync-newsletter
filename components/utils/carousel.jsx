@@ -9,6 +9,7 @@ const Carousel = ({ items }) => {
   if (typeof window !== "undefined") {
     window.$ = window.jQuery = require("jquery");
   }
+
   return (
     <div>
       <OwlCarousel
@@ -22,7 +23,7 @@ const Carousel = ({ items }) => {
         //   responsive={Responsive}
       >
         {items?.map((item, i) => (
-          <div class="item" key={i}>
+          <div class="item" key={item}>
             {item}
           </div>
         ))}
