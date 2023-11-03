@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getImageFromMailHTML } from "@/lib/utils";
 
-const page = ({ params }) => {
+const Brandpage = ({ params }) => {
   const { data } = useQuery({
     queryKey: ["brand", params.name],
     queryFn: async () => {
@@ -91,4 +91,4 @@ const page = ({ params }) => {
   );
 };
 
-export default page;
+export default Brandpage;
