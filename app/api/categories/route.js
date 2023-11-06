@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import Categories from "@/models/categories";
 import dbConnect from "@/lib/dbConnect";
-import Mails from "@/models/mail";
 import Brands from "@/models/brands";
 
 export const GET = async (request, { params }) => {

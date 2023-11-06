@@ -1,5 +1,7 @@
+"use client";
 import UserLayout from "@/app/layouts/userLayout";
 import { Button } from "@/components/ui";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
@@ -21,6 +23,8 @@ const category = [
 ];
 
 const CategoryPage = () => {
+  const { data: session } = useSession();
+  console.log(session);
   return (
     <UserLayout>
       <div className="max-w-container mx-auto px-10 ">

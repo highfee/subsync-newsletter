@@ -7,26 +7,34 @@ const Carousel = dynamic(() => import("@/components/utils/carousel"), {
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "../ui";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 const BrandsThumbnail = () => {
-  const { data, isLoading, isError } = useQuery({
+  const { data: session } = useSession();
+
+  const { data } = useQuery({
     queryKey: ["catergories"],
     queryFn: async () => {
       const { data } = await axios.get("/api/categories");
-      setTest(data);
       return data;
     },
   });
-  const [test, setTest] = useState(data);
+
+  const mutatation = useMutation(async (data) => {
+    return axios.post("http://localhost:3000/api/user/followBrand", data, {
+      headers: {
+        Authorization: session?.user.accessToken,
+      },
+    });
+  });
 
   const imgLoader = (url) => {
     return url;
   };
 
-  const items = test?.brands.map((mail, i) => {
+  const items = data?.brands.map((mail, i) => {
     return (
       <div key={i} className="w-[280px] h-[]">
         <Image
@@ -41,7 +49,21 @@ const BrandsThumbnail = () => {
           width="180"
           className=" w-[200px] h-[200px] object-contain"
         />
-        <Button className="w-full py-1 mt-2">follow</Button>
+        {session?.user && session.user.followedBrands.includes(mail._id) ? (
+          <Button className="w-full py-1 mt-2">unfollow</Button>
+        ) : (
+          <Button
+            className="w-full py-1 mt-2"
+            onClick={() => {
+              mutatation.mutate({
+                userId: session.user._id,
+                brandId: mail._id,
+              });
+            }}
+          >
+            follow
+          </Button>
+        )}
       </div>
     );
   });

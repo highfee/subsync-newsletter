@@ -9,12 +9,19 @@ const Carousel = dynamic(() => import("@/components/utils/carousel"), {
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
-const TopBrands = ({ title, subtitle }) => {
+const FollowedBrands = ({ title, subtitle }) => {
+  const { data: session } = useSession();
+
   const { data } = useQuery({
-    queryKey: ["brands"],
+    queryKey: ["randomUserBrands"],
     queryFn: async () => {
-      const { data } = await axios.get("/api/brands");
+      const { data } = await axios.get(`/api/user/followedBrands/1`, {
+        headers: {
+          Authorization: session?.user?.accessToken,
+        },
+      });
       return data;
     },
   });
@@ -22,7 +29,7 @@ const TopBrands = ({ title, subtitle }) => {
     return url;
   };
 
-  const items = data?.res.map((item) => {
+  const items = data?.map((item) => {
     return (
       <div
         key={item}
@@ -53,10 +60,10 @@ const TopBrands = ({ title, subtitle }) => {
         <p className="text-gray-800 mt-8 max-w-[350px] mx-auto">{subtitle}</p>
       </div>
       <div className="mt-10">
-        <Carousel items={items} key={data?.res[0]._id} />
+        <Carousel items={items} key={data} />
       </div>
     </div>
   );
 };
 
-export default TopBrands;
+export default FollowedBrands;

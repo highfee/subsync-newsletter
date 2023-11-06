@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 
+import { signIn, useSession } from "next-auth/react";
 import AuthLayout from "@/app/layouts/AuthLayout";
 import { Button } from "@/components/ui";
 import { Input } from "@/components/ui/input";
@@ -11,14 +12,34 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import Image from "next/image";
 import Link from "next/link";
 
+import { useRouter } from "next/navigation";
+
 import { useFormik } from "formik";
 import { loginFormSchema } from "@/components/utils/formik";
 
 const UserLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const onSubmit = () => {};
+  const { push } = useRouter();
+  const { data: session } = useSession();
 
+  if (session && session?.user) {
+    push("/user/");
+  }
+
+  const handleOAuthSignIn = (provider) => {
+    signIn(provider);
+  };
+
+  const onSubmit = async () => {
+    try {
+      await signIn("credentials", {
+        redirect: false,
+        email: values.email,
+        password: values.password,
+      });
+    } catch (error) {}
+  };
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
     useFormik({
       initialValues: {
@@ -39,7 +60,7 @@ const UserLogin = () => {
           <p className="text-center text-4xl md:text-5xl text-primary-bg font-bold">
             Sign In
           </p>
-          <form className="mt-10 flex flex-col gap-10">
+          <form className="mt-10 flex flex-col gap-10" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -115,11 +136,15 @@ const UserLogin = () => {
               Sign in
             </Button>
           </form>
-          
+
           <div className="mt-10 flex flex-col gap-8">
             <Button
               variant="outline"
               className="w-full text-lg md:text-xl border"
+              onClick={(e) => {
+                e.preventDefault();
+                handleOAuthSignIn("google");
+              }}
             >
               <GoogleIcon fontSize="larg" className="mr-1 " /> Sign in with
               Google
@@ -127,6 +152,10 @@ const UserLogin = () => {
             <Button
               variant="outline"
               className="w-full text-lg md:text-xl border"
+              onClick={(e) => {
+                e.preventDefault();
+                handleOAuthSignIn("facebook");
+              }}
             >
               <FacebookIcon fontSize="larg" className="mr-1" /> Sign in with
               Facebook

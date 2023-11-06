@@ -9,8 +9,43 @@ import Link from "next/link";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
+import { useFormik } from "formik";
+import { registerFormSchema } from "@/components/utils/formik";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+
+import { useRouter } from "next/navigation";
+
 const UserRegistration = () => {
+  const { push } = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+
+  const mutation = useMutation(async (data) => {
+    const res = await axios.post("/api/auth/register", data);
+
+    if (res) {
+      push("/user/categoryPage");
+    } else {
+      alert("Email already exist");
+    }
+    return;
+  });
+
+  const onSubmit = () => {
+    mutation.mutate(values);
+  };
+
+  const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
+    useFormik({
+      initialValues: {
+        fullname: "",
+        email: "",
+        password: "",
+      },
+      validationSchema: registerFormSchema,
+      onSubmit,
+    });
+
   return (
     <AuthLayout>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center px-10 gap-10 max-w-container mx-auto mb-20">
@@ -26,7 +61,7 @@ const UserRegistration = () => {
           <p className="text-center text-4xl md:text-5xl text-primary-bg font-bold">
             Sign Up
           </p>
-          <form className="mt-10 flex flex-col gap-10">
+          <form className="mt-10 flex flex-col gap-10" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="name"
@@ -37,9 +72,16 @@ const UserRegistration = () => {
               <Input
                 className="p-4 h- rounded-3xl text-lg"
                 placeholder="Enter Your Fullname"
-                id="name"
+                id="fullname"
                 type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
+              {errors.fullname && touched.fullname && (
+                <p className="text-red-500 text-[14px] w-[90%] mt-1">
+                  {errors.fullname}
+                </p>
+              )}
             </div>
             <div>
               <label
@@ -53,7 +95,14 @@ const UserRegistration = () => {
                 placeholder="Enter Your Email Address"
                 id="email"
                 type="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
+              {errors.email && touched.email && (
+                <p className="text-red-500 text-[14px] w-[90%] mt-1">
+                  {errors.email}
+                </p>
+              )}
             </div>
             <div>
               <label
@@ -62,19 +111,28 @@ const UserRegistration = () => {
               >
                 Password
               </label>
-              <div className="relative">
-                <Input
-                  className="p-4 h- rounded-3xl text-lg"
-                  placeholder="Enter Your password"
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                />
-                <div
-                  className="absolute top-1/2 -translate-y-1/2 right-5"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {!showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              <div>
+                <div className="relative">
+                  <Input
+                    className="p-4 h- rounded-3xl text-lg"
+                    placeholder="Enter Your password"
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <div
+                    className="absolute top-1/2 -translate-y-1/2 right-5"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {!showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                  </div>
                 </div>
+                {errors.password && touched.password && (
+                  <p className="text-red-500 text-[14px] w-[90%] mt-1">
+                    {errors.password}
+                  </p>
+                )}
               </div>
             </div>
             <div>
@@ -84,19 +142,28 @@ const UserRegistration = () => {
               >
                 Confirm Password
               </label>
-              <div className="relative">
-                <Input
-                  className="p-4 h- rounded-3xl text-lg"
-                  placeholder="Confirm password"
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                />
-                <div
-                  className="absolute top-1/2 -translate-y-1/2 right-5"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {!showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              <div>
+                <div className="relative">
+                  <Input
+                    className="p-4 h- rounded-3xl text-lg"
+                    placeholder="Confirm password"
+                    id="confirmPassword"
+                    type={showPassword ? "text" : "password"}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <div
+                    className="absolute top-1/2 -translate-y-1/2 right-5"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {!showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                  </div>
                 </div>
+                {errors.confirmPassword && touched.confirmPassword && (
+                  <p className="text-red-500 text-[14px] w-[90%] mt-1">
+                    {errors.confirmPassword}
+                  </p>
+                )}
               </div>
             </div>
             <div className="flex justify-between items-center flex-wrap gap-2">
@@ -114,23 +181,6 @@ const UserRegistration = () => {
               Sign up
             </Button>
           </form>
-      
-          {/* <div className="mt-10 flex flex-col gap-8">
-            <Button variant="outline" className="w-full text-xl md:text-2xl">
-              <GoogleIcon
-                fontSize="larg"
-                className="mr-1 text-2xl md:text-4xl"
-              />{" "}
-              Sign in with Google
-            </Button>
-            <Button variant="outline" className="w-full text-xl md:text-2xl">
-              <FacebookIcon
-                fontSize="larg"
-                className="mr-1 text-2xl md:text-4xl"
-              />{" "}
-              Sign in with Facebook
-            </Button>
-          </div> */}
         </div>
       </div>
     </AuthLayout>

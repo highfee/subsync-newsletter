@@ -1,9 +1,12 @@
+"use client";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { signOut, useSession } from "next-auth/react";
 
 const UserNavbar = () => {
+  const { data: session } = useSession();
   return (
     <div className="b shadow-sm p-4 sticky top-0 bg-white z-50">
       <div className="m max-w-container mx-auto flex justify-between items-center">
@@ -21,7 +24,21 @@ const UserNavbar = () => {
           <Link href="/">Register brand</Link>
         </div>
 
-        <div className="hidden lg:block">Hi User</div>
+        <div className="flex gap-3">
+          <div className="hidden lg:block">
+            Hi {session?.user.fullname.split(" ")[0]}
+          </div>
+          {session && session.user && (
+            <p
+              onClick={() => {
+                signOut();
+              }}
+              className="cursor-pointer"
+            >
+              Sign out
+            </p>
+          )}
+        </div>
         <div className="block lg:hidden cursor-pointer">
           <MenuIcon fontSize="large" />
         </div>

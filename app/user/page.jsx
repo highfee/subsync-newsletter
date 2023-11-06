@@ -1,8 +1,9 @@
+"use client";
+
 import UserLayout from "@/app/layouts/userLayout";
-import BrandsThumbnail from "@/components/brandsThumbnail/BrandsThumbnail";
 import GeneralFooter from "@/components/generalFooter/GeneralFooter";
 import Hero from "@/components/landingPage/hero";
-import TopBrands from "@/components/landingPage/topBrands";
+import FollowedBrands from "@/components/userPage/FollowedBrands";
 
 const UserHome = () => {
   return (
@@ -13,13 +14,10 @@ const UserHome = () => {
           subtitle="Get all the latest deal and promo from your favorite brand all in one palace with subsync"
           img="/images/user_hero.svg"
         />
-        <TopBrands
+        <FollowedBrands
           title="Brands you are following"
           subtitle="See all the brands that you are following and get all the latest about the brand"
         />
-        <BrandsThumbnail category="National Retailers" />
-        <BrandsThumbnail category="Fashion & Apparel Brands" />
-        <BrandsThumbnail category="Fashion & Apparel Brands" />
       </div>
       <GeneralFooter />
     </UserLayout>
