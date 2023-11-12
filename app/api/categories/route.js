@@ -3,7 +3,7 @@ import Categories from "@/models/categories";
 import dbConnect from "@/lib/dbConnect";
 import Brands from "@/models/brands";
 
-export const GET = async (request, { params }) => {
+export const GET = async () => {
   await dbConnect();
 
   try {

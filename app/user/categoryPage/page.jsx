@@ -1,33 +1,51 @@
 "use client";
 import UserLayout from "@/app/layouts/userLayout";
 import { Button } from "@/components/ui";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
-
-const category = [
-  "Fashion",
-  "Sport",
-  "Job",
-  "Techonlogy",
-  "Relationships",
-  "Innovation",
-  "Travels",
-  "Beauty",
-  "Skin care",
-  "Games",
-  "Cars",
-  "Beauty",
-  "Skin care",
-  "Games",
-];
+import React, { useState } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const CategoryPage = () => {
+  const [selectedCategories, setSetselectedCategories] = useState([]);
   const { data: session } = useSession();
   console.log(session);
+
+  const { push } = useRouter();
+
+  const handleClick = (item) => {
+    if (selectedCategories.includes(item._id)) {
+      setSetselectedCategories((prev) =>
+        prev.filter((category) => category !== item?._id)
+      );
+    } else {
+      setSetselectedCategories((prevs) => [...prevs, item?._id]);
+    }
+  };
+
+  const { data } = useQuery({
+    queryKey: ["allcategories"],
+    queryFn: async () => {
+      const { data } = await axios.get("/api/categories/getCategories");
+      return data;
+    },
+  });
+
+  const mutate = useMutation(async (data) => {
+    await axios.post("/api/categories/followCategory", data, {
+      headers: {
+        Authorization: session?.user.accessToken,
+      },
+    });
+
+    push("/user");
+  });
+
   return (
     <UserLayout>
-      <div className="max-w-container mx-auto px-10 ">
+      <div className="max-w-container mx-auto px-10 mb-10 md:mb-20 ">
         <div className="mt-10 md:mt-20">
           <h1 className="text-center text-3xl md:text-4xl font-[600]">
             Select Category
@@ -38,21 +56,30 @@ const CategoryPage = () => {
           </p>
           <div className="md:mx-20">
             <div className="flex flex-wrap gap-6 md:gap-10 mt-20  ">
-              {category.map((item, index) => (
+              {data?.map((item, index) => (
                 <div
                   key={index}
-                  className=" py-4 flex-1 basis-[fit-content] px-7 shadow-md  text-base md:text-lg rounded-[50px] max-w-[200px] text-center cursor-pointer hover:scale-105"
+                  className={`py-3 flex-1 basis-[fit-content] px-7 shadow-md  text-base md:text-lg rounded-[50px] max-w-[max-content] text-center cursor-pointer hover:scale-105 items-center ${
+                    selectedCategories.includes(item._id) &&
+                    " bg-primary-bg text-white"
+                  }`}
+                  onClick={() => handleClick(item)}
                 >
-                  {item}
+                  {item?.name}
                 </div>
               ))}
             </div>
             <div className="flex items-center justify-between mt-20">
               <Button
-                asChild
                 className="py-3 px-7 text-lg md:text-2xl rounded-2xl"
+                onClick={() => {
+                  mutate.mutate({
+                    userId: session?.user._id,
+                    categoryId: selectedCategories,
+                  });
+                }}
               >
-                <Link href="">Continue</Link>
+                Continue
               </Button>
               <Link
                 href=""

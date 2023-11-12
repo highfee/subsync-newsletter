@@ -10,9 +10,11 @@ import { Button } from "../ui";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const BrandsThumbnail = () => {
   const { data: session } = useSession();
+  const { push } = useRouter();
 
   const { data } = useQuery({
     queryKey: ["catergories"],
@@ -23,12 +25,30 @@ const BrandsThumbnail = () => {
   });
 
   const mutatation = useMutation(async (data) => {
-    return axios.post("http://localhost:3000/api/user/followBrand", data, {
-      headers: {
-        Authorization: session?.user.accessToken,
-      },
-    });
+    const res = await axios.post(
+      "http://localhost:3000/api/user/followBrand",
+      data,
+      {
+        headers: {
+          Authorization: session?.user.accessToken,
+        },
+      }
+    );
+    if (res) {
+      session.user = {
+        ...session.user,
+        followedBrands: [...session.user.followedBrands, data.brandId],
+      };
+      console.log(session);
+    }
   });
+  // const mutatation = useMutation(async (data) => {
+  //   return axios.post("http://localhost:3000/api/user/followBrand", data, {
+  //     headers: {
+  //       Authorization: session?.user.accessToken,
+  //     },
+  //   });
+  // });
 
   const imgLoader = (url) => {
     return url;
@@ -55,10 +75,14 @@ const BrandsThumbnail = () => {
           <Button
             className="w-full py-1 mt-2"
             onClick={() => {
-              mutatation.mutate({
-                userId: session.user._id,
-                brandId: mail._id,
-              });
+              if (session && session?.user) {
+                mutatation.mutate({
+                  userId: session.user._id,
+                  brandId: mail._id,
+                });
+              } else {
+                push("/user/login");
+              }
             }}
           >
             follow

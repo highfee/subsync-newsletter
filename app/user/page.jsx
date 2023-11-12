@@ -4,6 +4,7 @@ import UserLayout from "@/app/layouts/userLayout";
 import GeneralFooter from "@/components/generalFooter/GeneralFooter";
 import Hero from "@/components/landingPage/hero";
 import FollowedBrands from "@/components/userPage/FollowedBrands";
+import News from "@/components/userPage/News";
 
 const UserHome = () => {
   return (
@@ -19,6 +20,7 @@ const UserHome = () => {
           subtitle="See all the brands that you are following and get all the latest about the brand"
         />
       </div>
+      <News />
       <GeneralFooter />
     </UserLayout>
   );

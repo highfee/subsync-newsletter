@@ -59,7 +59,10 @@ export async function POST(request) {
 
     return new Response(JSON.stringify({ res: others }), {
       status: 200,
-      headers: { "Set-Cookie": seralized },
+      headers: {
+        "Set-Cookie": seralized,
+        // "Set-Cookie": await getCsrfToken(options),
+      },
     });
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 });

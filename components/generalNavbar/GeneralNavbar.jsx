@@ -34,7 +34,11 @@ const GeneralNavbar = () => {
               );
             })}
             {session && session?.user ? (
-              <p>Hi {session?.user.fullname.split(" ")[0]}</p>
+              <p>
+                <Link href={"/user"}>
+                  Hi {session?.user.fullname.split(" ")[0]}
+                </Link>
+              </p>
             ) : (
               <>
                 <Link href="/user/login">Sign in</Link>

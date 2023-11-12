@@ -15,6 +15,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const UserRegistration = () => {
   const { push } = useRouter();
@@ -24,11 +25,16 @@ const UserRegistration = () => {
     const res = await axios.post("/api/auth/register", data);
 
     if (res) {
+      await signIn("credentials", {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      });
       push("/user/categoryPage");
     } else {
       alert("Email already exist");
     }
-    return;
+    // return;
   });
 
   const onSubmit = () => {
