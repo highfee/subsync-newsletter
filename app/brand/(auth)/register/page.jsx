@@ -19,6 +19,7 @@ import { useFormik } from "formik";
 import { registerFormSchema } from "@/components/utils/formik";
 import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
+import { signIn } from "next-auth/react";
 
 const BrandLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
