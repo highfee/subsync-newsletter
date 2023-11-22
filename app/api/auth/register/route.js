@@ -29,6 +29,8 @@ export async function POST(request) {
       fullname,
       email,
       password: hashedPassword,
+      isBrand: body.isBrand || false,
+      isAdmin: body.isAdmin || false,
     });
 
     await user.save();

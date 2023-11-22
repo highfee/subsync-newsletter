@@ -26,7 +26,7 @@ export const getMessageBody = (message) => {
   return "";
 };
 
-export const decodeData = (message, type) => {
+export const decodeData = (message) => {
   const data = getMessageBody(message);
   return Buffer.from(data, "base64").toString("utf-8");
 };
@@ -38,7 +38,7 @@ export const getSender = (sender) => {
   return sender.slice(0, sender.indexOf("<") - 1).replaceAll('"', "");
 };
 
-export const getMessageCategory = async (message, sender) => {
+export const getMessageCategory = async (message) => {
   const res = await gpt3.chat.completions.create({
     model: "gpt-3.5-turbo-16k",
     messages: [
@@ -59,6 +59,7 @@ export const getMessageCategory = async (message, sender) => {
   });
 
   let category = res.choices[0].message.content;
+  console.log(category);
 
   return category;
 };
@@ -73,10 +74,10 @@ export const fetchMails = async () => {
     GOOGLE_CLIENT_SECRET,
     GOOGLE_REDIRECT_URL
   );
-  const authUrl = oauth2Client.generateAuthUrl({
-    access_type: "offline",
-    scope: ["https://www.googleapis.com/auth/gmail.modify"],
-  });
+  // const authUrl = oauth2Client.generateAuthUrl({
+  //   access_type: "offline",
+  //   scope: ["https://www.googleapis.com/auth/gmail.modify"],
+  // });
 
   oauth2Client.setCredentials({
     refresh_token:
@@ -86,7 +87,7 @@ export const fetchMails = async () => {
 
   const res = await gmail.users.messages.list({
     userId: "me",
-    maxResults: 100,
+    maxResults: 5,
     q: `category:promotions`,
   });
 

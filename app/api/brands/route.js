@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import Mail from "@/models/mail";
+
 import Brands from "@/models/brands";
 import dbConnect from "@/lib/dbConnect";
 
-export const GET = async (request, { params }) => {
+export const GET = async () => {
   await dbConnect();
 
   try {
