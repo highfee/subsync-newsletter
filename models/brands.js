@@ -5,8 +5,8 @@ const Brands = mongoose.Schema(
     name: String,
     logoUrl: String,
     categories: {
-      type: String,
-      default: "Others",
+      type: [String],
+      default: [],
     },
     gottenFrom: {
       type: String,

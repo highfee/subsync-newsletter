@@ -25,7 +25,7 @@ const Mails = new mongoose.Schema(
       require: true,
     },
     category: {
-      type: String,
+      type: [String],
     },
     data: {
       type: String,
@@ -37,12 +37,11 @@ const Mails = new mongoose.Schema(
   }
 );
 
-// Mails.pre("save", function (next) {
-//   if (this.category && typeof this.category == "string") {
-//     this.category = this.category.split(",").map((item) => item.trim());
-//     console.log(this.category);
-//   }
-//   next();
-// });
+Mails.pre("save", function (next) {
+  if (this.category && typeof this.category == "string") {
+    this.category = this.category.split(",").map((item) => item.trim());
+  }
+  next();
+});
 
 export default mongoose.models.Mails || mongoose.model("Mails", Mails);

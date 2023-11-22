@@ -1,13 +1,11 @@
 //
 //
 
-import dbConnect from "@/lib/dbConnect";
 import { signJwtAccessToken } from "@/lib/jwt";
 import User from "@/models/user";
 import * as bcrypt from "bcrypt";
 
 export async function POST(request) {
-  await dbConnect();
   const body = await request.json();
 
   const user = await User.findOne({

@@ -37,9 +37,9 @@ const NewsletterDetailPage = ({ params }) => {
             />
             <Button className="w-full mt-4">Follow</Button>
           </div>
-          <div className="flex-1 rounded-lg mt-10 lg:mt-0 bg-white py-10">
+          <div className="flex-1 borde rounded-lg mt-10 lg:mt-0 ">
             <div
-              className="w-full"
+              className="w- w-full "
               dangerouslySetInnerHTML={{ __html: data?.res.data }}
             />
           </div>

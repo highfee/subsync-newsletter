@@ -12,7 +12,7 @@ const Brandpage = ({ params }) => {
   const { data } = useQuery({
     queryKey: ["brand", params.name],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/brands/${params.name}`);
+      const { data } = await axios.get(`/api/users/brands/${params.name}`);
       return data;
     },
   });

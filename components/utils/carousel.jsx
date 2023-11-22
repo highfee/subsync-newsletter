@@ -14,8 +14,6 @@ const Carousel = ({ items }) => {
     <div>
       <OwlCarousel
         className="owl-theme"
-        // autoplay={true}
-        // autoplaySpeed={4000}
         // loop
         margin={25}
         dots
@@ -24,7 +22,7 @@ const Carousel = ({ items }) => {
         // center={true}
         //   responsive={Responsive}
       >
-        {items?.map((item) => (
+        {items?.map((item, i) => (
           <div class="item" key={item}>
             {item}
           </div>

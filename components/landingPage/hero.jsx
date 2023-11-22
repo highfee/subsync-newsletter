@@ -13,7 +13,7 @@ const Hero = ({ title, subtitle, img }) => {
             type="text"
             id="email"
             placeholder="Search"
-            className=" bg-transparent border-0 focus-visible:ring-0 focus-visible:bg-transparent focus-visible:ring-offset-0 text-xl pl-7"
+            className=" border-0 focus-visible:ring-0 focus-visible:bg-transparent focus-visible:ring-offset-0 text-xl pl-7"
           />
           <div className="cursor-pointer border p-2 md:p-3 rounded-full">
             <Image

@@ -1,17 +1,32 @@
 "use client";
 import UserLayout from "@/app/layouts/userLayout";
 import { Button } from "@/components/ui";
-import Link from "next/link";
-import React, { useState } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+
+// const category = [
+//   "Fashion",
+//   "Sport",
+//   "Job",
+//   "Techonlogy",
+//   "Relationships",
+//   "Innovation",
+//   "Travels",
+//   "Beauty",
+//   "Skin care",
+//   "Games",
+//   "Cars",
+//   "Beauty",
+//   "Skin care",
+//   "Games",
+// ];
 
 const CategoryPage = () => {
   const [selectedCategories, setSetselectedCategories] = useState([]);
   const { data: session } = useSession();
-  console.log(session);
 
   const { push } = useRouter();
 
@@ -28,13 +43,13 @@ const CategoryPage = () => {
   const { data } = useQuery({
     queryKey: ["allcategories"],
     queryFn: async () => {
-      const { data } = await axios.get("/api/categories/getCategories");
+      const { data } = await axios.get("/api/users/categories/getCategories");
       return data;
     },
   });
 
   const mutate = useMutation(async (data) => {
-    await axios.post("/api/categories/followCategory", data, {
+    await axios.post("/api/users/categories/followCategory", data, {
       headers: {
         Authorization: session?.user.accessToken,
       },
