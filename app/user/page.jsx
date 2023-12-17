@@ -11,8 +11,8 @@ const UserHome = () => {
     <UserLayout>
       <div className="my-20">
         <Hero
-          title="Explore an amazon experience "
-          subtitle="Get all the latest deal and promo from your favorite brand all in one palace with subsync"
+          title="Discover Your Favorites:"
+          subtitle="Your preferences drive our recommendations, ensuring each newsletter resonates with your interests"
           img="/images/user_hero.svg"
         />
         <FollowedBrands

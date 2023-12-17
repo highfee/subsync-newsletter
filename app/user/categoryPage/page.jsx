@@ -8,23 +8,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-// const category = [
-//   "Fashion",
-//   "Sport",
-//   "Job",
-//   "Techonlogy",
-//   "Relationships",
-//   "Innovation",
-//   "Travels",
-//   "Beauty",
-//   "Skin care",
-//   "Games",
-//   "Cars",
-//   "Beauty",
-//   "Skin care",
-//   "Games",
-// ];
-
 const CategoryPage = () => {
   const [selectedCategories, setSetselectedCategories] = useState([]);
   const { data: session } = useSession();
@@ -45,6 +28,7 @@ const CategoryPage = () => {
     queryKey: ["allcategories"],
     queryFn: async () => {
       const { data } = await axios.get("/api/users/categories/getCategories");
+      S;
       return data;
     },
   });

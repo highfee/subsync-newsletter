@@ -11,7 +11,7 @@ import {
   getMessageCategory,
   fetchMails,
   fetchSenderLogo2,
-} from "@/app/api/mail/functions";
+} from "@/app/api/users/mail/functions";
 
 export async function GET() {
   await dbConnect();

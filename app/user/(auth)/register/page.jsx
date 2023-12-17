@@ -28,6 +28,7 @@ const UserRegistration = () => {
 
   const mutation = useMutation(async (data) => {
     const res = await axios.post("/api/users/auth/register", data);
+    console.log(data);
 
     if (res) {
       await signIn("credentials", {

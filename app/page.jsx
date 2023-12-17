@@ -9,16 +9,16 @@ export default async function Home() {
     <MainLayout>
       <main className=" pt-16 lg:pt-30 ">
         <Hero
-          title="Lorem Ipsum is simply dummy"
-          subtitle="Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy"
+          title="Curated newsletters, thoughtfully gathered for your convenience."
+          subtitle="Here you get sales, deals, coupons, and discount codes from brands, retailers, and creators you love"
           img="/images/hero image.svg"
         />
         <TopBrands
           title="Top Brands"
-          subtitle="See what all the top brands have installed for you and your loved once"
+          // subtitle="See what all the top brands have installed for you and your loved once"
         />
 
-        <About />
+        {/* <About /> */}
         <BrandsThumbnail />
       </main>
     </MainLayout>

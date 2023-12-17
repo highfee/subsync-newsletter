@@ -59,7 +59,6 @@ export const getMessageCategory = async (message) => {
   });
 
   let category = res.choices[0].message.content;
-  console.log(category);
   return category;
 };
 
