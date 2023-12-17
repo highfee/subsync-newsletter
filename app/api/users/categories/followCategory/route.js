@@ -1,6 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import { verifyJwt } from "@/lib/jwt";
-import Categories from "@/models/categories";
+
 import User from "@/models/user";
 
 export async function POST(request) {
@@ -21,6 +21,16 @@ export async function POST(request) {
     }
 
     const { userId, categoryId } = body;
+
+    if (Array.isArray(categoryId)) {
+      await User.findByIdAndUpdate(
+        userId,
+        {
+          $addToSet: { followedCategories: { $each: categoryId } },
+        },
+        { new: true }
+      );
+    }
 
     const user = await User.findByIdAndUpdate(
       userId,

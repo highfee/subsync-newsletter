@@ -1,4 +1,4 @@
-import { options } from "@/app/api/auth/[...nextauth]/options";
+import { options } from "@/app/api/users/auth/[...nextauth]/options";
 import dbConnect from "@/lib/dbConnect";
 import { verifyJwt } from "@/lib/jwt";
 import Brands from "@/models/brands";

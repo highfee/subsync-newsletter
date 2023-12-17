@@ -14,17 +14,28 @@ import { registerFormSchema } from "@/components/utils/formik";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const UserRegistration = () => {
   const { push } = useRouter();
+  const { get } = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
+
+  const brand = get("brand");
+
+  // console.log(brand);
 
   const mutation = useMutation(async (data) => {
     const res = await axios.post("/api/users/auth/register", data);
 
     if (res) {
-      push("/user/categoryPage");
+      await signIn("credentials", {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      });
+      push(!brand ? "/user/categoryPage" : "/brand/welcome");
     } else {
       alert("Email already exist");
     }
@@ -32,7 +43,7 @@ const UserRegistration = () => {
   });
 
   const onSubmit = () => {
-    mutation.mutate(values);
+    mutation.mutate({ ...values, isBrand: brand ? true : false });
   };
 
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } =

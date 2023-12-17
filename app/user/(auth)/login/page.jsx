@@ -38,6 +38,7 @@ const UserLogin = () => {
         email: values.email,
         password: values.password,
       });
+      push("/user/");
     } catch (error) {}
   };
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } =

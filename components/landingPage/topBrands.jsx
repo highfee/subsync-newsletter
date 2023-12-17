@@ -14,7 +14,7 @@ const TopBrands = ({ title, subtitle }) => {
   const { data } = useQuery({
     queryKey: ["brands"],
     queryFn: async () => {
-      const { data } = await axios.get("/api/brands");
+      const { data } = await axios.get("/api/users/brands");
       return data;
     },
   });

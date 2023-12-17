@@ -17,17 +17,21 @@ const BrandsThumbnail = () => {
   const { data } = useQuery({
     queryKey: ["catergories"],
     queryFn: async () => {
-      const { data } = await axios.get("/api/categories");
+      const { data } = await axios.get("/api/users/categories");
       return data;
     },
   });
 
   const mutatation = useMutation(async (data) => {
-    return axios.post("http://localhost:3000/api/user/followBrand", data, {
-      headers: {
-        Authorization: session?.user.accessToken,
-      },
-    });
+    return axios.post(
+      "http://localhost:3000/api/users/user/followBrand",
+      data,
+      {
+        headers: {
+          Authorization: session?.user.accessToken,
+        },
+      }
+    );
   });
 
   const imgLoader = (url) => {

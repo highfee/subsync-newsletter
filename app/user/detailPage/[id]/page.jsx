@@ -12,7 +12,7 @@ const NewsletterDetailPage = ({ params }) => {
   const { data } = useQuery({
     queryKey: ["news", id],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/news/${id}`);
+      const { data } = await axios.get(`/api/users/news/${id}`);
       return data;
     },
   });

@@ -12,7 +12,7 @@ const GeneralNavbar = () => {
 
   return (
     <div className="b shadow-sm p-4 sticky top-0 bg-white z-50">
-      <div className="m max-w-container mx-auto flex justify-between items-center">
+      <div className="max-w-container mx-auto flex justify-between items-center">
         <div>
           <Link href="/">
             <Image
@@ -44,7 +44,7 @@ const GeneralNavbar = () => {
                   size="sm"
                   className="text-20px"
                 >
-                  <Link href="/user/register">Sign up</Link>
+                  <Link href="/user/authInter">Sign up</Link>
                 </Button>
               </>
             )}

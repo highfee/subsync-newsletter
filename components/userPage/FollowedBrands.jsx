@@ -17,7 +17,7 @@ const FollowedBrands = ({ title, subtitle }) => {
   const { data } = useQuery({
     queryKey: ["randomUserBrands"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/user/followedBrands/1`, {
+      const { data } = await axios.get(`/api/users/user/followedBrands/1`, {
         headers: {
           Authorization: session?.user?.accessToken,
         },
