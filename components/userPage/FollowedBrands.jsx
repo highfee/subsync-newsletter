@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import dynamic from "next/dynamic";
-const Carousel = dynamic(() => import("@/components/utils/carousel"), {
-  ssr: false,
-});
+// import dynamic from "next/dynamic";
+// const Carousel = dynamic(() => import("@/components/utils/carousel"), {
+//   ssr: false,
+// });
+import Carousel from "../utils/carousel";
 
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
@@ -59,9 +60,7 @@ const FollowedBrands = ({ title, subtitle }) => {
         <h1 className=" text-3xl md:text-5xl font-bold">{title}</h1>
         <p className="text-gray-800 mt-8 max-w-[350px] mx-auto">{subtitle}</p>
       </div>
-      <div className="mt-10">
-        <Carousel items={items} key={data} />
-      </div>
+      <div className="mt-10">{/* <Carousel items={items} key={data} /> */}</div>
     </div>
   );
 };
