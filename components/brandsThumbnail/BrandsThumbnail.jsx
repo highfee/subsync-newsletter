@@ -41,7 +41,10 @@ const BrandsThumbnail = () => {
 
   const items = data?.brands.map((mail, i) => {
     return (
-      <div key={i} className="w-[280px] h-[] flex flex-col items-center">
+      <div
+        key={i}
+        className="w-[180p] md:w-[280p] h-[] flex flex-col items-center pr-3"
+      >
         <Image
           loader={() => imgLoader(mail.logoUrl)}
           src={
