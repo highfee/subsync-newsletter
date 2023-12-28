@@ -1,9 +1,10 @@
 "use client";
 
-import dynamic from "next/dynamic";
-const Carousel = dynamic(() => import("@/components/utils/carousel"), {
-  ssr: false,
-});
+// import dynamic from "next/dynamic";
+// const Carousel = dynamic(() => import("@/components/utils/carousel"), {
+//   ssr: false,
+// });
+import Carousel from "../utils/carousel";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "../ui";
@@ -40,7 +41,10 @@ const BrandsThumbnail = () => {
 
   const items = data?.brands.map((mail, i) => {
     return (
-      <div key={i} className="w-[280px] h-[]">
+      <div
+        key={i}
+        className="w-[180p] md:w-[280p] h-[] flex flex-col items-center pr-3"
+      >
         <Image
           loader={() => imgLoader(mail.logoUrl)}
           src={

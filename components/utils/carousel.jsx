@@ -1,33 +1,43 @@
 "use client";
 
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
+import { FreeMode, Navigation, Scrollbar } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/scrollbar";
+import "swiper/css/navigation";
 const Carousel = ({ items }) => {
-  var $ = require("jquery");
-  if (typeof window !== "undefined") {
-    window.$ = window.jQuery = require("jquery");
-  }
-
   return (
     <div>
-      <OwlCarousel
-        className="owl-theme"
-        // loop
-        margin={25}
-        dots
-        items={"auto"}
-        autoWidth={true}
-        // center={true}
-        //   responsive={Responsive}
+      <Swiper
+        // spaceBetween={50}
+        // slidesPerView={"auto"}
+        modules={[FreeMode, Scrollbar]}
+        freeMode
+        scrollbar
+        height={300}
+        breakpoints={{
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          480: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          640: {
+            slidesPerView: 5,
+            spaceBetween: 40,
+          },
+        }}
       >
-        {items?.map((item, i) => (
+        {items?.map((item) => (
           <div class="item" key={item}>
-            {item}
+            <SwiperSlide>{item}</SwiperSlide>
           </div>
         ))}
-      </OwlCarousel>
+      </Swiper>
     </div>
   );
 };
