@@ -20,14 +20,14 @@ export async function GET() {
     const { messageIds, gmail } = await fetchMails();
 
     const messages = [];
-    // for (const messageId of messageIds) {
-    //   const message = await gmail.users.messages.get({
-    //     userId: "me",
-    //     id: messageId,
-    //     format: "full", // Request the full message content
-    //   });
-    //   messages.push(message.data);
-    // }
+    for (const messageId of messageIds) {
+      const message = await gmail.users.messages.get({
+        userId: "me",
+        id: messageId,
+        format: "full", // Request the full message content
+      });
+      messages.push(message.data);
+    }
 
     for (const messageId of messageIds) {
       const message = await gmail.users.messages.get({
@@ -74,6 +74,12 @@ export async function GET() {
                 .value
             ),
             logoUrl: await fetchSenderLogo2(message.data),
+            email: getSender(
+              message.data.payload.headers.find((item) => item.name == "From")
+                .value
+            ),
+            password: "undefined",
+            fullname: "undefined",
           });
           await brand.save();
         }
