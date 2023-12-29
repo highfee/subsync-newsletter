@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import MenuIcon from "@mui/icons-material/Menu";
+import {Sheet, SheetContent, SheetTrigger} from "../ui/sheet"
 
 import { navLinks } from "@/lib/utils";
 import { useSession, signOut } from "next-auth/react";
@@ -62,7 +63,56 @@ const GeneralNavbar = () => {
           </div>
         </div>
         <div className="block lg:hidden cursor-pointer">
-          <MenuIcon fontSize="large" />
+          <Sheet>
+            <SheetTrigger>
+              <MenuIcon fontSize="large" />
+            </SheetTrigger>
+            <SheetContent>
+              <div className=" flex flex-col gap-y-4 items-start mt-6">
+                {navLinks.map((link, index) => {
+              return (
+                <Link href={link.link} key={index}>
+                  <Button
+                  size="sm"
+                  variant="ghost"
+                  >
+                    {link.name}
+                  </Button>
+                  
+                </Link>
+              );
+            })}
+            <div className="ml-8 space-y-4 flex flex-col mt-6">
+              {session && session?.user ? (
+              <p>hello</p>
+            ) : (
+              // <p>Hi {session?.user.fullname.split(" ")[0]}</p>
+              <>
+                <Link href="/user/login">Sign in</Link>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="text-20px"
+                >
+                  <Link href="/user/authInter">Sign up</Link>
+                </Button>
+              </>
+            )}
+            {session && session.user && (
+              <p
+                onClick={() => {
+                  signOut();
+                }}
+                className="cursor-pointer"
+              >
+                Sign out
+              </p>
+            )}
+            </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </div>

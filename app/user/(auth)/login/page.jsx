@@ -53,8 +53,8 @@ const UserLogin = () => {
 
   return (
     <AuthLayout>
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center px-10 gap-10 max-w-container mx-auto mb-20">
-        <div className="shadow-md-inner h-full  items-center hidden md:flex">
+      <div className="grid grid-cols-1 lg:grid-cols-2 items-center px-10 gap-10 max-w-container mx-auto mb-20">
+        <div className="shadow-md-inner h-full  items-center hidden lg:flex">
           <Image src="/images/userLogin.svg" alt="" width="600" height="500" />
         </div>
         <div className="min-h-[calc(100vh-100px)] pt-16 md:pt-20 md:mx-10">
