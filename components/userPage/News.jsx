@@ -1,11 +1,5 @@
 "use client";
 
-// import dynamic from "next/dynamic";
-
-// const Carousel = dynamic(() => import("@/components/utils/carousel"), {
-//   ssr: false,
-// });
-
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -14,6 +8,7 @@ import NewsThumbnail from "./NewsThumbnail";
 
 const News = () => {
   const { data: session } = useSession();
+
   const { data, isLoading, isError } = useQuery({
     queryKey: ["randomUserCatAndMails"],
     queryFn: async () => {

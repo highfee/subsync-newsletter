@@ -2,10 +2,6 @@
 
 import Image from "next/image";
 import Carousel from "../utils/carousel";
-// import dynamic from "next/dynamic";
-// const Carousel = dynamic(() => import("@/components/utils/carousel"), {
-//   ssr: false,
-// });
 
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";

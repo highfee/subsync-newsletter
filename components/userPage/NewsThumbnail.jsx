@@ -1,22 +1,18 @@
 "use client";
-// import dynamic from "next/dynamic";
 
 import { Button } from "../ui";
 import Link from "next/link";
 import { getImageFromMailHTML } from "@/lib/utils";
 import Image from "next/image";
 
-// const Carousel = dynamic(() => import("@/components/utils/carousel"), {
-//   ssr: false,
-// });
-
 import Carousel from "../utils/carousel";
+
 const NewsThumbnail = ({ data }) => {
   const imageLoader = (src) => {
     return src;
   };
 
-  const items = data?.map(async (mail) => {
+  const items = data?.map((mail) => {
     const url = getImageFromMailHTML(mail?.data);
     return (
       <div
@@ -56,6 +52,7 @@ const NewsThumbnail = ({ data }) => {
 
   return (
     <div>
+      {" "}
       <Carousel items={items} key={items} />
     </div>
   );
