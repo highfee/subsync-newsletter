@@ -15,7 +15,6 @@ const Carousel = ({ items }) => {
         // slidesPerView={"auto"}
         modules={[FreeMode, Scrollbar]}
         freeMode
-        scrollbar
         height={300}
         breakpoints={{
           320: {

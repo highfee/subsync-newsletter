@@ -40,7 +40,10 @@ export async function GET() {
 
       if (!mailExist) {
         const mailCategory = await getMessageCategory(
-          message.data.snippet,
+          message.data.snippet +
+            "  " +
+            message.data.payload.headers.find((item) => item.name == "Subject")
+              .value,
           getSender(
             message.data.payload.headers.find((item) => item.name == "From")
               .value

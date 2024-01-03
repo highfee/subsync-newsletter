@@ -27,7 +27,7 @@ const UserNavbar = () => {
 
         <div className="flex gap-3">
           <div className="hidden lg:block">
-            Hi {session?.user.name.split(" ")[0]}
+            Hi {session?.user.fullname.split(" ")[0]}
           </div>
           {session && session.user && (
             <p

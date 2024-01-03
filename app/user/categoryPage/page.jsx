@@ -28,7 +28,7 @@ const CategoryPage = () => {
     queryKey: ["allcategories"],
     queryFn: async () => {
       const { data } = await axios.get("/api/users/categories/getCategories");
-      S;
+
       return data;
     },
   });
