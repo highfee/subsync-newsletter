@@ -24,15 +24,11 @@ const BrandsThumbnail = () => {
   });
 
   const mutatation = useMutation(async (data) => {
-    return axios.post(
-      "http://localhost:3000/api/users/user/followBrand",
-      data,
-      {
-        headers: {
-          Authorization: session?.user.accessToken,
-        },
-      }
-    );
+    return axios.post("/api/users/user/followBrand", data, {
+      headers: {
+        Authorization: session?.user.accessToken,
+      },
+    });
   });
 
   const imgLoader = (url) => {

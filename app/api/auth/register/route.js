@@ -51,7 +51,7 @@ export async function POST(request) {
 
     const seralized = serialize("me", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV !== "development",
       sameSite: "strict",
       maxAge: MAX_AGE,
       path: "/",

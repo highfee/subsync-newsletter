@@ -40,10 +40,7 @@ export const options = {
           password: credentials?.password,
         };
 
-        const res = await axios.post(
-          "http://localhost:3000/api/users/auth/login",
-          body
-        );
+        const res = await axios.post("/api/users/auth/login", body);
 
         const user = await res.data;
 
