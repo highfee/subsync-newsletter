@@ -39,10 +39,12 @@ export const options = {
           password: credentials?.password,
         };
 
-        const res = await axios.post(
-          "https://subsync-newsletter-git-develop-highfee.vercel.app/api/users/auth/login",
-          body
-        );
+        const url =
+          process.env.ENV == "development"
+            ? "http://localhost:3000"
+            : "https://subsync-newsletter-git-develop-highfee.vercel.app";
+
+        const res = await axios.post(`${url}/api/users/auth/login`, body);
 
         const user = await res.data;
 
