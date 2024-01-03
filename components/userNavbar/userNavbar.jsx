@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { signOut, useSession } from "next-auth/react";
-import {Sheet, SheetContent, SheetTrigger} from "../ui/sheet"
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
 const UserNavbar = () => {
   const { data: session } = useSession();
@@ -27,7 +27,7 @@ const UserNavbar = () => {
 
         <div className="flex gap-3">
           <div className="hidden lg:block">
-            Hi {session?.user.fullname.split(" ")[0]}
+            Hi {session?.user.name.split(" ")[0]}
           </div>
           {session && session.user && (
             <p

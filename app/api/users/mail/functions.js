@@ -84,7 +84,7 @@ export const fetchMails = async () => {
 
   const res = await gmail.users.messages.list({
     userId: "me",
-    maxResults: 5,
+    maxResults: 10,
     q: `category:promotions`,
   });
 

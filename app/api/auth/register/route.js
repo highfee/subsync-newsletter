@@ -26,7 +26,7 @@ export async function POST(request) {
     const hashedPassword = await bcrypt.hash(body.password, 10);
 
     const user = new User({
-      fullname,
+      name: fullname,
       email,
       password: hashedPassword,
       isBrand: body.isBrand || false,

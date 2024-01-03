@@ -8,6 +8,7 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import FacebookProvider from "next-auth/providers/facebook";
 import axios from "axios";
+import { signJwtAccessToken } from "@/lib/jwt";
 
 export const options = {
   providers: [
@@ -67,6 +68,11 @@ export const options = {
 
     async session({ session, token }) {
       session.user = token;
+      session.user.accessToken = signJwtAccessToken({
+        email: token.email,
+        isAdmin: false,
+        isBrand: false,
+      });
       return session;
     },
   },

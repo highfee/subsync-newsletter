@@ -14,7 +14,7 @@ import NewsThumbnail from "./NewsThumbnail";
 
 const News = () => {
   const { data: session } = useSession();
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["randomUserCatAndMails"],
     queryFn: async () => {
       const { data } = await axios.get(`/api/users/user/followedCatAndMails`, {
@@ -28,6 +28,9 @@ const News = () => {
 
   if (isLoading) {
     return <p>Loading.....</p>;
+  }
+  if (isError) {
+    return <p>Error.....</p>;
   }
 
   return (

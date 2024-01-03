@@ -15,7 +15,7 @@ export const GET = async () => {
     if (!accessToken || !verifyJwt(accessToken)) {
       return new Response(
         JSON.stringify({
-          error: "unauthorized",
+          error: "unauthorized ",
         }),
         {
           status: 401,
