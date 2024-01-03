@@ -49,7 +49,7 @@ const UserRegistration = () => {
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
     useFormik({
       initialValues: {
-        fullname: "",
+        name: "",
         email: "",
         password: "",
       },
@@ -83,14 +83,14 @@ const UserRegistration = () => {
               <Input
                 className="p-4 h- rounded-3xl text-lg"
                 placeholder="Enter Your Fullname"
-                id="fullname"
+                id="name"
                 type="text"
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
               {errors.fullname && touched.fullname && (
                 <p className="text-red-500 text-[14px] w-[90%] mt-1">
-                  {errors.fullname}
+                  {errors.name}
                 </p>
               )}
             </div>

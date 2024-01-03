@@ -12,7 +12,7 @@ export async function POST(request) {
   await dbConnect();
   const body = await request.json();
 
-  const { fullname, email } = body;
+  const { name, email } = body;
 
   try {
     const userExist = await User.findOne({ email });
@@ -26,7 +26,7 @@ export async function POST(request) {
     const hashedPassword = await bcrypt.hash(body.password, 10);
 
     const user = new User({
-      fullname,
+      name,
       email,
       password: hashedPassword,
       isBrand: body.isBrand || false,
