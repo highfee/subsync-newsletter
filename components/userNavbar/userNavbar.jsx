@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { signOut, useSession } from "next-auth/react";
 import {Sheet, SheetContent, SheetTrigger} from "../ui/sheet"
+import ProfileButton from "../ProfileButton";
 
 const UserNavbar = () => {
   const { data: session } = useSession();
@@ -41,16 +42,7 @@ const UserNavbar = () => {
           )}
         </div>
         <div className="block lg:hidden cursor-pointer">
-          <Sheet>
-            <SheetTrigger>
-              <MenuIcon fontSize="large" />
-            </SheetTrigger>
-            <SheetContent>
-              <Link href="/">Home</Link>
-              <Link href="/">About</Link>
-              <Link href="/">Contact</Link>
-            </SheetContent>
-          </Sheet>
+          <ProfileButton signOut={signOut}/>
         </div>
       </div>
     </div>
