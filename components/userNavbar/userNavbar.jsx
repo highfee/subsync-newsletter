@@ -4,12 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { signOut, useSession } from "next-auth/react";
-import {Sheet, SheetContent, SheetTrigger} from "../ui/sheet"
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import ProfileButton from "../ProfileButton";
 
 const UserNavbar = () => {
   const { data: session } = useSession();
-  console.log(session)
+  console.log(session);
+  const userName = session?.user.name.split(" ")[0];
   return (
     <div className="b shadow-sm p-4 sticky top-0 bg-white z-50">
       <div className="m max-w-container mx-auto flex justify-between items-center">
@@ -23,27 +24,24 @@ const UserNavbar = () => {
               priority
             />
           </Link>
-
-          <Link href="/">Register brand</Link>
+          {session?.user.isBrand ? (
+            <Link href="/user?brand=false" className="hidden lg:block">
+              Switch to Client
+            </Link>
+          ) : (
+            <Link href="/brand/welcome?brand=true" className="hidden lg:block">
+              register a brand
+            </Link>
+          )}
         </div>
 
         <div className="flex gap-3">
           <div className="hidden lg:block">
-            Hi {session?.user.name.split(" ")[0]}
+            Hi <ProfileButton signOut={signOut} userName={userName} />
           </div>
-          {session && session.user && (
-            <p
-              onClick={() => {
-                signOut();
-              }}
-              className="cursor-pointer"
-            >
-              Sign out
-            </p>
-          )}
         </div>
         <div className="block lg:hidden cursor-pointer">
-          <ProfileButton signOut={signOut}/>
+          <ProfileButton signOut={signOut} userName={userName} />
         </div>
       </div>
     </div>

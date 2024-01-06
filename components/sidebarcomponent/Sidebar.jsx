@@ -1,20 +1,33 @@
-"use client"
-import React from 'react'
+"use client";
+import React from "react";
 // material icon
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import EmailIcon from '@mui/icons-material/Email';
-import LanguageIcon from '@mui/icons-material/Language';
-import SettingsIcon from '@mui/icons-material/Settings';
-import LogoutIcon from '@mui/icons-material/Logout';
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import EmailIcon from "@mui/icons-material/Email";
+import LanguageIcon from "@mui/icons-material/Language";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { signOut, useSession } from "next-auth/react";
 
-import SidebarLinks from '../ui/SidebarLinks';
+import SidebarLinks from "../ui/SidebarLinks";
 
-const Sidebar = ({sideBarOpen, setSideBarOpen, handleSibeBar, mobileSidebar, setMobileSidebar, handleMobileSidebar}) => {
-    
+const Sidebar = ({
+  sideBarOpen,
+  setSideBarOpen,
+  handleSibeBar,
+  mobileSidebar,
+  setMobileSidebar,
+  handleMobileSidebar,
+}) => {
   return (
-    <div className={sideBarOpen ? ' hidden lg:block sticky top-0 left-0 z-30 w-[20%] bg-[#0B0087] transition ease-out duration-700 ' : ' sticky top-0 left-0 z-30 w-[10%] bg-[#0B0087] transition-all ease-out duration-700'}>
+    <div
+      className={
+        sideBarOpen
+          ? " hidden lg:block sticky top-0 left-0 z-30 w-[20%] bg-[#0B0087] transition ease-out duration-700 "
+          : " sticky top-0 left-0 z-30 w-[10%] bg-[#0B0087] transition-all ease-out duration-700"
+      }
+    >
       <div className="w-[100%]  h-[100vh] px-4 py-4 relative">
         <div
           onClick={handleSibeBar}
@@ -65,7 +78,12 @@ const Sidebar = ({sideBarOpen, setSideBarOpen, handleSibeBar, mobileSidebar, set
             >
               Logout
             </h1>
-            <div className="text-white">
+            <div
+              onClick={() => {
+                signOut();
+              }}
+              className="text-white"
+            >
               <LogoutIcon />
             </div>
           </div>
@@ -73,6 +91,6 @@ const Sidebar = ({sideBarOpen, setSideBarOpen, handleSibeBar, mobileSidebar, set
       </div>
     </div>
   );
-}
+};
 
-export default Sidebar
+export default Sidebar;

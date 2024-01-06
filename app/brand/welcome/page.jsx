@@ -6,6 +6,7 @@ import { Button } from "@/components/ui";
 import Link from "next/link";
 import Modal from "@/components/ui/modal";
 import BrandForm from "@/components/ui/BrandForm";
+import { signOut, useSession } from "next-auth/react";
 
 /**
  * Renders a welcome screen for a brand.
@@ -54,7 +55,7 @@ const BrandWelcome = () => {
         {/* modal section*/}
         {modal && (
           <Modal modal={modal} setModal={setModal} handleModal={handleModal}>
-            <BrandForm />
+            <BrandForm useSession={useSession} />
           </Modal>
         )}
       </div>

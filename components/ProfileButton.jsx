@@ -1,3 +1,4 @@
+"use client";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,13 +10,14 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Link from "next/link";
 
-const ProfileButton = ({signOut}) => {
-    //console.log(userName)
+const ProfileButton = ({ signOut, userName }) => {
+  const firstTwoChar = userName?.substring(0, 2);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
-          <AvatarFallback>us</AvatarFallback>
+          <AvatarFallback>{firstTwoChar}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
@@ -27,11 +29,16 @@ const ProfileButton = ({signOut}) => {
         <Link href="#">
           <DropdownMenuItem>Settings</DropdownMenuItem>
         </Link>
-
-          <DropdownMenuItem onClick={()=>{
-            signOut({callbackUrl: "/"});
-          }}>Sign out</DropdownMenuItem>
-        
+        <Link href="/user/register?brand=true" className="block lg:hidden">
+          <DropdownMenuItem>Register brand</DropdownMenuItem>
+        </Link>
+        <DropdownMenuItem
+          onClick={() => {
+            signOut({ callbackUrl: "/" });
+          }}
+        >
+          Sign out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
