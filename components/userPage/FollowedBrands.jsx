@@ -47,7 +47,7 @@ const FollowedBrands = ({ title, subtitle }) => {
             alt=""
             height="200"
             width="200"
-            className=" w-full h-auto object-cove"
+            className="w-[400p] h-[200p] object-cove"
           />
         </Link>
       </div>
@@ -60,7 +60,9 @@ const FollowedBrands = ({ title, subtitle }) => {
         <h1 className=" text-3xl md:text-5xl font-bold">{title}</h1>
         <p className="text-gray-800 mt-8 max-w-[350px] mx-auto">{subtitle}</p>
       </div>
-      <div className="mt-10">{/* <Carousel items={items} key={data} /> */}</div>
+      <div className="mt-10">
+        <Carousel items={items} key={data} />{" "}
+      </div>
     </div>
   );
 };

@@ -23,11 +23,11 @@ const Brandpage = ({ params }) => {
 
   return (
     <UserLayout>
-      <div className="bg-[#D9D9D9] h-[28vmax] min-h-[300px] max-h-[450px]">
+      <div className="bg-[#D9D9D9] lg:h-[32vmax] min-h-[300px] max-h-[500px]">
         <div className="py-16 lg:py-30 max-w-container px-10 mx-auto h-full">
-          <div className="h-full flex justify-between">
-            <div className="flex gap-14 ">
-              <div className="max-h">
+          <div className="h-full flex flex-col lg:flex-row justify-between gap-10">
+            <div className="flex flex-col lg:flex-row gap-14">
+              <div>
                 <Image
                   src={data?.brand.logoUrl}
                   alt="brand profile image"
@@ -38,18 +38,14 @@ const Brandpage = ({ params }) => {
                   priority
                 />
               </div>
-              <div className="i self-center max-w-[500px] ">
+              <div className="self-center max-w-[500px] ">
                 <h1 className="text-3xl md:text-4xl mb-5 text-primary-bg">
                   {data?.brand.name}
                 </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-                  voluptatem vel voluptatum numquam dignissimos odit non
-                  excepturi laboriosam veniam tempora!
-                </p>
+                <p>{data?.brand.description}</p>
               </div>
             </div>
-            <div className="self-end ">
+            <div className="self-end">
               <Button size="md" className="p-4">
                 Follow
               </Button>
