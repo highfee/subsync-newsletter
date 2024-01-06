@@ -20,6 +20,7 @@ export async function POST(request) {
       return new Response(JSON.stringify("User already exist"), {
         status: 405,
       });
+      // throw Error("user already exist");
     }
 
     // hash password

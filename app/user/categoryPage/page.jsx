@@ -1,5 +1,6 @@
 "use client";
 import UserLayout from "@/app/layouts/userLayout";
+import Loading from "@/components/Loading";
 import { Button } from "@/components/ui";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -79,7 +80,7 @@ const CategoryPage = () => {
                   });
                 }}
               >
-                Continue
+                {mutate.isLoading ? <Loading /> : "Continue"}
               </Button>
               <Link
                 href=""

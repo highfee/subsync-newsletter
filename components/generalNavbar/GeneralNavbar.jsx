@@ -12,8 +12,6 @@ import { useSession, signOut } from "next-auth/react";
 const GeneralNavbar = () => {
   const { data: session } = useSession();
 
-  console.log(session?.user);
-
   return (
     <div className="b shadow-sm p-4 sticky top-0 bg-white z-50">
       <div className="max-w-container mx-auto flex justify-between items-center">

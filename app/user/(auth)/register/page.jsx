@@ -16,6 +16,7 @@ import axios from "axios";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
+import Loading from "@/components/Loading";
 
 const UserRegistration = () => {
   const { push } = useRouter();
@@ -24,22 +25,18 @@ const UserRegistration = () => {
 
   const brand = get("brand");
 
-  // console.log(brand);
-
   const mutation = useMutation(async (data) => {
     const res = await axios.post("/api/users/auth/register", data);
-
-    if (res) {
-      await signIn("credentials", {
-        redirect: false,
-        email: data.email,
-        password: data.password,
-      });
-      push(!brand ? "/user/categoryPage" : "/brand/welcome");
-    } else {
-      alert("Email already exist");
-    }
-    return;
+    try {
+      if (res.status == 200) {
+        await signIn("credentials", {
+          redirect: false,
+          email: data.email,
+          password: data.password,
+        });
+        push(!brand ? "/user/categoryPage" : "/brand/welcome");
+      }
+    } catch (error) {}
   });
 
   const onSubmit = () => {
@@ -189,7 +186,7 @@ const UserRegistration = () => {
               </p>
             </div>
             <Button className="rounded-2xl w-full text-lg md:text-xl p-4">
-              Sign up
+              {mutation.isLoading ? <Loading /> : "Sign up"}
             </Button>
           </form>
         </div>
