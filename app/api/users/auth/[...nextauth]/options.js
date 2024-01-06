@@ -8,6 +8,7 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import FacebookProvider from "next-auth/providers/facebook";
 import axios from "axios";
+import { signJwtAccessToken } from "@/lib/jwt";
 
 export const options = {
   providers: [
@@ -39,10 +40,7 @@ export const options = {
           password: credentials?.password,
         };
 
-        const res = await axios.post(
-          "http://localhost:3000/api/users/auth/login",
-          body
-        );
+        const res = await axios.post("/api/users/auth/login", body);
 
         const user = await res.data;
 
@@ -67,6 +65,11 @@ export const options = {
 
     async session({ session, token }) {
       session.user = token;
+      session.user.accessToken = signJwtAccessToken({
+        email: token.email,
+        isAdmin: false,
+        isBrand: false,
+      });
       return session;
     },
   },

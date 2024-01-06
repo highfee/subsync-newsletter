@@ -24,57 +24,59 @@ const BrandsThumbnail = () => {
   });
 
   const mutatation = useMutation(async (data) => {
-    return axios.post(
-      "http://localhost:3000/api/users/user/followBrand",
-      data,
-      {
-        headers: {
-          Authorization: session?.user.accessToken,
-        },
-      }
-    );
+    return axios.post("/api/users/user/followBrand", data, {
+      headers: {
+        Authorization: session?.user.accessToken,
+      },
+    });
   });
 
   const imgLoader = (url) => {
     return url;
   };
 
-  const items = data?.brands.map((mail, i) => {
-    return (
-      <div
-        key={i}
-        className="w-[180p] md:w-[280p] h-[] flex flex-col items-center pr-3"
-      >
-        <Image
-          loader={() => imgLoader(mail.logoUrl)}
-          src={
-            mail.logoUrl == null
-              ? "/images/brand-1.png"
-              : mail.logoUrl + `?timestamp=${Date.now()}`
-          }
-          alt=""
-          height="180"
-          width="180"
-          className=" w-[200px] h-[200px] object-contain"
-        />
-        {session?.user && session.user.followedBrands.includes(mail._id) ? (
-          <Button className="w-full py-1 mt-2">unfollow</Button>
-        ) : (
-          <Button
-            className="w-full py-1 mt-2"
-            onClick={() => {
-              mutatation.mutate({
-                userId: session.user._id,
-                brandId: mail._id,
-              });
-            }}
-          >
-            follow
-          </Button>
-        )}
-      </div>
-    );
-  });
+  if (!data?.category) {
+    return "no data";
+  }
+
+  const items =
+    data?.brands.length &&
+    data?.brands.map((mail, i) => {
+      return (
+        <div
+          key={i}
+          className="w-[180p] md:w-[280p] h-[] flex flex-col items-center pr-3"
+        >
+          <Image
+            loader={() => imgLoader(mail.logoUrl)}
+            src={
+              mail.logoUrl == null
+                ? "/images/brand-1.png"
+                : mail.logoUrl + `?timestamp=${Date.now()}`
+            }
+            alt=""
+            height="180"
+            width="180"
+            className=" w-[200px] h-[200px] object-contain"
+          />
+          {session?.user && session.user.followedBrands.includes(mail._id) ? (
+            <Button className="w-full py-1 mt-2">unfollow</Button>
+          ) : (
+            <Button
+              className="w-full py-1 mt-2"
+              onClick={() => {
+                mutatation.mutate({
+                  userId: session.user._id,
+                  brandId: mail._id,
+                });
+              }}
+            >
+              follow
+            </Button>
+          )}
+        </div>
+      );
+    });
 
   return (
     <div className="my-20 max-w-container px-10 mx-auto">

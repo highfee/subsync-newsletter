@@ -9,6 +9,7 @@ import ProfileButton from "../ProfileButton";
 
 const UserNavbar = () => {
   const { data: session } = useSession();
+  console.log(session)
   return (
     <div className="b shadow-sm p-4 sticky top-0 bg-white z-50">
       <div className="m max-w-container mx-auto flex justify-between items-center">
@@ -28,7 +29,7 @@ const UserNavbar = () => {
 
         <div className="flex gap-3">
           <div className="hidden lg:block">
-            Hi {session?.user.fullname.split(" ")[0]}
+            Hi {session?.user.name.split(" ")[0]}
           </div>
           {session && session.user && (
             <p

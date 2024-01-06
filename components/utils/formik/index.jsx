@@ -17,7 +17,7 @@ export const loginFormSchema = Yup.object().shape({
 });
 
 export const registerFormSchema = Yup.object().shape({
-  fullname: Yup.string()
+  name: Yup.string()
     .min(4, "Fullname should be more than four letters.")
     .required("Fullname is required"),
   email: Yup.string()

@@ -78,14 +78,13 @@ export const fetchMails = async () => {
   // });
 
   oauth2Client.setCredentials({
-    refresh_token:
-      "1//04QDQOwFCWTCACgYIARAAGAQSNwF-L9Ir7AEkJYp299tl_BAtjp20ez0hplrk6AsrD3h4G5VWvgD8URYZsYmiBCbBFEHsWOBg1Ck",
+    refresh_token: process.env.google_refresh_token,
   });
   const gmail = google.gmail({ version: "v1", auth: oauth2Client });
 
   const res = await gmail.users.messages.list({
     userId: "me",
-    maxResults: 5,
+    maxResults: 10,
     q: `category:promotions`,
   });
 

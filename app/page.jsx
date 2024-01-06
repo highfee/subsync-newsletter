@@ -4,7 +4,7 @@ import TopBrands from "@/components/landingPage/topBrands";
 import MainLayout from "./layouts/MainLayout";
 import BrandsThumbnail from "@/components/brandsThumbnail/BrandsThumbnail";
 
-export default async function Home() {
+export default function Home() {
   return (
     <MainLayout>
       <main className=" pt-16 lg:pt-30 ">

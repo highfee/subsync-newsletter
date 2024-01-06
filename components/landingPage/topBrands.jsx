@@ -2,10 +2,6 @@
 
 import Image from "next/image";
 import Carousel from "../utils/carousel";
-// import dynamic from "next/dynamic";
-// const Carousel = dynamic(() => import("@/components/utils/carousel"), {
-//   ssr: false,
-// });
 
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
@@ -54,7 +50,9 @@ const TopBrands = ({ title, subtitle }) => {
         <p className="text-gray-800 mt-8 max-w-[350px] mx-auto">{subtitle}</p>
       </div>
       <div className="mt-10">
-        <Carousel items={items} key={data?.res[0]._id} />
+        {data?.res.length > 0 && (
+          <Carousel items={items} key={data?.res[0]._id} />
+        )}
       </div>
     </div>
   );

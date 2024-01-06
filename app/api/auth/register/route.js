@@ -26,7 +26,7 @@ export async function POST(request) {
     const hashedPassword = await bcrypt.hash(body.password, 10);
 
     const user = new User({
-      fullname,
+      name: fullname,
       email,
       password: hashedPassword,
       isBrand: body.isBrand || false,
@@ -51,7 +51,7 @@ export async function POST(request) {
 
     const seralized = serialize("me", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV == "production",
       sameSite: "strict",
       maxAge: MAX_AGE,
       path: "/",

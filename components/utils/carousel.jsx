@@ -2,20 +2,18 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { FreeMode, Navigation, Scrollbar } from "swiper/modules";
+import { FreeMode, Scrollbar } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
+
 const Carousel = ({ items }) => {
   return (
     <div>
       <Swiper
-        // spaceBetween={50}
-        // slidesPerView={"auto"}
         modules={[FreeMode, Scrollbar]}
         freeMode
-        scrollbar
         height={300}
         breakpoints={{
           320: {

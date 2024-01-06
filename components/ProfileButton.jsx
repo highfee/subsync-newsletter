@@ -9,8 +9,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Link from "next/link";
 
-const ProfileButton = ({signOut, userName}) => {
-    console.log(userName)
+const ProfileButton = ({signOut}) => {
+    //console.log(userName)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
