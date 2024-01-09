@@ -57,6 +57,7 @@ export const options = {
       },
     }),
   ],
+  secret: "KWyPyFJAM/gdX9II3vzSMeBUizS8MNAOjW2db7KNJjQ=",
   pages: {
     signIn: "/user/login",
   },
