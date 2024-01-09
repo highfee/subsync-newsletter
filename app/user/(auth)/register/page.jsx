@@ -185,7 +185,7 @@ const UserRegistration = () => {
                 </Link>
               </p>
             </div>
-            <Button className="rounded-2xl w-full text-lg md:text-xl p-3">
+            <Button className="rounded-2xl w-full tex-lg md:text-xl p-3">
               {mutation.isLoading ? <Loading /> : "Sign up"}
             </Button>
           </form>
