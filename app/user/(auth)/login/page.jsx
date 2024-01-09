@@ -40,6 +40,7 @@ const UserLogin = () => {
         redirect: false,
         email: values.email,
         password: values.password,
+        callbackUrl: "/user",
       });
       setLoading(false);
       push("/user/");
