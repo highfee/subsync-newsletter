@@ -16,9 +16,11 @@ import { useRouter } from "next/navigation";
 
 import { useFormik } from "formik";
 import { loginFormSchema } from "@/components/utils/formik";
+import Loading from "@/components/Loading";
 
 const UserLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { push } = useRouter();
   const { data: session } = useSession();
@@ -32,12 +34,14 @@ const UserLogin = () => {
   };
 
   const onSubmit = async () => {
+    setLoading(true);
     try {
       await signIn("credentials", {
         redirect: false,
         email: values.email,
         password: values.password,
       });
+      setLoading(false);
       push("/user/");
     } catch (error) {}
   };
@@ -134,7 +138,7 @@ const UserLogin = () => {
               </Link>
             </div>
             <Button className="rounded-2xl w-full text-lg md:text-xl py-4">
-              Sign in
+              {loading ? <Loading /> : "Sign in"}
             </Button>
           </form>
 

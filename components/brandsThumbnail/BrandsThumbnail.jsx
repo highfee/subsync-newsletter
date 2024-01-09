@@ -1,9 +1,5 @@
 "use client";
 
-// import dynamic from "next/dynamic";
-// const Carousel = dynamic(() => import("@/components/utils/carousel"), {
-//   ssr: false,
-// });
 import Carousel from "../utils/carousel";
 import Link from "next/link";
 import Image from "next/image";
@@ -59,21 +55,18 @@ const BrandsThumbnail = () => {
             width="180"
             className=" w-[200px] h-[200px] object-contain"
           />
-          {session?.user && session.user.followedBrands.includes(mail._id) ? (
-            <Button className="w-full py-1 mt-2">unfollow</Button>
-          ) : (
-            <Button
-              className="w-full py-1 mt-2"
-              onClick={() => {
-                mutatation.mutate({
-                  userId: session.user._id,
-                  brandId: mail._id,
-                });
-              }}
-            >
-              follow
-            </Button>
-          )}
+
+          <Button
+            className="w-full py-1 mt-2"
+            onClick={() => {
+              mutatation.mutate({
+                userId: session.user._id,
+                brandId: mail._id,
+              });
+            }}
+          >
+            follow
+          </Button>
         </div>
       );
     });
