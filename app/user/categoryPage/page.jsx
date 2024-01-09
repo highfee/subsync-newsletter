@@ -72,7 +72,7 @@ const CategoryPage = () => {
             </div>
             <div className="flex items-center justify-between mt-20">
               <Button
-                className="py-3 px-7 text-lg md:text-2xl rounded-2xl"
+                className="py-2 px-5 text-l md:text-2l rounded-xl text-white"
                 onClick={() => {
                   mutate.mutate({
                     userId: session?.user._id,

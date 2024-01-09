@@ -29,13 +29,13 @@ const News = () => {
   }
 
   return (
-    <div className="my-20 max-w-container px-10 mx-auto">
+    <div className="my-20 max-w-container px-10 mx-auto news">
       {Object.keys(data).map(
         (item) =>
           data[item].length > 0 && (
-            <>
-              <div className="flex flex-col gap-4 mb-10 md:mb-20">
-                <h1 className="text-3xl md:text-4xl font-bold max-w-[450px]">
+            <div key={item} className="mb-10 md:mb-20">
+              <div className="flex flex-col gap-4 ">
+                <h1 className="text-2xl md:text-3xl font-bold max-w-[450px]">
                   Emails from {item} Brands
                 </h1>
                 <div className="flex justify-between items-center">
@@ -51,7 +51,7 @@ const News = () => {
               <div className="mt-2">
                 <NewsThumbnail data={data[item]} />
               </div>
-            </>
+            </div>
           )
       )}
     </div>

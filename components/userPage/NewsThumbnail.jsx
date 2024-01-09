@@ -17,7 +17,7 @@ const NewsThumbnail = ({ data }) => {
     return (
       <div
         key={mail._id}
-        className="w-[250px] h-[400px] shadow-xl p-3 bg-white flex flex-col justify-between"
+        className="w-[250px] h-[400px] shadow-xl p-3 bg-white flex flex-col justify-between "
       >
         <div>
           <div className="mb-1 flex gap-4 items-center text-gray-700 text-sm">

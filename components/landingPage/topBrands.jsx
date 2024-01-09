@@ -36,7 +36,7 @@ const TopBrands = ({ title, subtitle }) => {
             alt=""
             height="200"
             width="200"
-            className=" w-full h-auto object-cove"
+            className=" w-full h-auto object-cover"
           />
         </Link>
       </div>

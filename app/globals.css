@@ -83,3 +83,6 @@ input:-webkit-autofill {
   outline: 1px solid green;
   outline-offset: -4px;
 }
+.news .swiper-slide {
+  /* width: fit-content !important; */
+}
