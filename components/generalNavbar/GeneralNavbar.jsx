@@ -13,7 +13,7 @@ const GeneralNavbar = () => {
   const { data: session } = useSession();
 
   return (
-    <div className="b shadow-sm p-4 sticky top-0 bg-white z-50">
+    <div className="b shadow-sm p-3 sticky top-0 bg-white z-50">
       <div className="max-w-container mx-auto flex justify-between items-center">
         <div>
           <Link href="/">
@@ -41,12 +41,7 @@ const GeneralNavbar = () => {
             ) : (
               <>
                 <Link href="/user/login">Sign in</Link>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="sm"
-                  className="text-20px"
-                >
+                <Button asChild variant="outline" className="txt-20px">
                   <Link href="/user/authInter">Sign up</Link>
                 </Button>
               </>

@@ -9,8 +9,14 @@ const page = () => {
     <div>
       <GeneralNavbar />
       <div className="flex flex-col items-center justify-center gap-20 h-[70vh]">
-        <Image src="/images/auth.svg" alt="" width="400" height="400" />
-        <div className="flex gap-6">
+        <Image
+          src="/images/auth.svg"
+          alt=""
+          width="400"
+          height="400"
+          className="w-[200px] md:w-[400px]"
+        />
+        <div className="flex gap-6 flex-col md:flex-row">
           <Button className="hover:bg-transparent hover:text-black ">
             <Link href="/user/register">Register as User</Link>
           </Button>

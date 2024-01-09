@@ -9,7 +9,7 @@ import ProfileButton from "../ProfileButton";
 
 const UserNavbar = () => {
   const { data: session } = useSession();
-  console.log(session);
+
   const userName = session?.user.name.split(" ")[0];
   return (
     <div className="b shadow-sm p-4 sticky top-0 bg-white z-50">

@@ -78,7 +78,7 @@ const UserRegistration = () => {
                 Fullname
               </label>
               <Input
-                className="p-4 h- rounded-3xl text-lg"
+                className="p-3 rounded-xl text-lg"
                 placeholder="Enter Your Fullname"
                 id="name"
                 type="text"
@@ -99,7 +99,7 @@ const UserRegistration = () => {
                 Email
               </label>
               <Input
-                className="p-4 h- rounded-3xl text-lg"
+                className="p-3 h- rounded-xl text-lg"
                 placeholder="Enter Your Email Address"
                 id="email"
                 type="email"
@@ -122,7 +122,7 @@ const UserRegistration = () => {
               <div>
                 <div className="relative">
                   <Input
-                    className="p-4 h- rounded-3xl text-lg"
+                    className="p-3 h- rounded-xl text-lg"
                     placeholder="Enter Your password"
                     id="password"
                     type={showPassword ? "text" : "password"}
@@ -153,7 +153,7 @@ const UserRegistration = () => {
               <div>
                 <div className="relative">
                   <Input
-                    className="p-4 h- rounded-3xl text-lg"
+                    className="p-3 h- rounded-xl text-lg"
                     placeholder="Confirm password"
                     id="confirmPassword"
                     type={showPassword ? "text" : "password"}
@@ -185,7 +185,7 @@ const UserRegistration = () => {
                 </Link>
               </p>
             </div>
-            <Button className="rounded-2xl w-full text-lg md:text-xl p-4">
+            <Button className="rounded-2xl w-full text-lg md:text-xl p-3">
               {mutation.isLoading ? <Loading /> : "Sign up"}
             </Button>
           </form>

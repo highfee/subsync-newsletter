@@ -75,7 +75,7 @@ const UserLogin = () => {
                 Email
               </label>
               <Input
-                className="p-4 h- rounded-3xl text-lg"
+                className="p-3 h- rounded-xl text-lg"
                 placeholder="Enter Your Email Address"
                 id="email"
                 type="email"
@@ -99,7 +99,7 @@ const UserLogin = () => {
               </label>
               <div className="relative">
                 <Input
-                  className="p-4 h- rounded-3xl text-lg"
+                  className="p-3 h- rounded-xl text-lg"
                   placeholder="Enter Your password"
                   id="password"
                   type={showPassword ? "text" : "password"}
@@ -138,7 +138,7 @@ const UserLogin = () => {
                 Forget Password
               </Link>
             </div>
-            <Button className="rounded-2xl w-full text-lg md:text-xl py-4">
+            <Button className="rounded-xl w-full tet-lg md:text-lg py-3">
               {loading ? <Loading /> : "Sign in"}
             </Button>
           </form>
@@ -146,7 +146,7 @@ const UserLogin = () => {
           <div className="mt-10 flex flex-col gap-8">
             <Button
               variant="outline"
-              className="w-full text-lg md:text-xl border"
+              className="w-full tet-lg md:text-lg border"
               onClick={(e) => {
                 e.preventDefault();
                 handleOAuthSignIn("google");
@@ -157,7 +157,7 @@ const UserLogin = () => {
             </Button>
             <Button
               variant="outline"
-              className="w-full text-lg md:text-xl border"
+              className="w-full tet-lg md:text-lg border"
               onClick={(e) => {
                 e.preventDefault();
                 handleOAuthSignIn("facebook");
