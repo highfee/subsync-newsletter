@@ -42,7 +42,7 @@ export const options = {
         const url =
           process.env.ENV == "development"
             ? "http://localhost:3000"
-            : "https://subsync-newsletter-git-develop-highfee.vercel.app";
+            : "https://subsync-newsletter.vercel.app";
 
         const res = await axios.post(`${url}/api/users/auth/login`, body);
         // const res = await axios.post(`http://localhost:3000/api/users/auth/login`, body);
