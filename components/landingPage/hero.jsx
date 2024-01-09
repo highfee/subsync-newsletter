@@ -8,20 +8,20 @@ const Hero = ({ title, subtitle, img }) => {
           {title}
         </h1>
         <p className="text-[#797979] py-10">{subtitle}</p>
-        <div className="flex items-center gap-1.5 border-2 p-2 rounded-full focus-within:outline-2  focus-within:outline /images/hero image.svgfocus-within:-outline-offset-[6px] focus-within:outline-primary-bg/50">
+        <div className="flex items-center gap-1.5 border-2 p-1 rounded-full focus-within:outline-1  focus-within:outline /images/hero image.svgfocus-within:-outline-offset-[6px] focus-within:outline-primary-bg/50">
           <Input
             type="text"
             id="email"
             placeholder="Search"
-            className=" border-0 focus-visible:ring-0 focus-visible:bg-transparent focus-visible:ring-offset-0 text-xl pl-7"
+            className="border-0 focus-visible:ring-0 focus-visible:bg-transparent focus-visible:ring-offset-0 text-xl pl-4"
           />
-          <div className="cursor-pointer border p-2 md:p-3 rounded-full">
+          <div className="cursor-pointer border p-1 md:p-2 rounded-full">
             <Image
               src="/images/icons/search.svg"
               alt="40"
-              width="40"
-              height="40"
-              className="h-[30px] w-[30px] md:w-[40px] md:h-[40px]"
+              width="20"
+              height="20"
+              className="w-[30px] h-[30px]"
             />
           </div>
         </div>
